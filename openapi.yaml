@@ -1,0 +1,588 @@
+openapi: 3.0.0
+info:
+  title: Schedules
+  description: Dispatching
+  contact:
+    name: a037264, a036284, a036761
+    email: a037264@ismai.pt, a036284@ismai.pt, a036761@ismai.pt
+  version: 0.0.1
+servers:
+  - url: http://localhost:8080
+    description: Meu localhost
+    variables:
+      basePath:
+        default: /
+paths:
+  /avarias:
+    get:
+      tags:
+        - AvariasController
+      summary: Retrieve Avarias
+      operationId: retrieveAvarias
+      responses:
+        '200':
+          description: Array of Avarias model instances
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Avaria'
+                x-content-type: application/json
+      x-swagger-router-controller: LessonsController
+    post:
+      tags:
+        - AvariasController
+      summary: Create Avaria
+      operationId: createAvaria
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Avaria'
+      responses:
+        '200':
+          description: Create a Avaria model instance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Avaria'
+      x-swagger-router-controller: AvariaController
+
+  /avarias/{id}:
+    get:
+      tags:
+        - AvariasController
+      summary: Retrieve Avaria
+      operationId: retrieveAvaria
+      parameters:
+        - name: id
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            minimum: 1
+            type: integer
+            format: int64
+          examples:
+            one:
+              summary: Retrieve Avaria id 1
+              value: 1
+            two:
+              summary: Retrieve Avaria id 2
+              value: 2
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Avaria'
+        '400':
+          description: Bad request
+        '404':
+          description: Id not found
+      x-swagger-router-controller: AvariasController
+    put:
+      tags:
+        - AvariasController
+      summary: Update Avaria
+      operationId: updateAvaria
+      parameters:
+        - name: id
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            minimum: 1
+            type: integer
+            format: int64
+          examples:
+            one:
+              summary: Update Lessons id 1
+              value: 1
+            two:
+              summary: Update Lessons id 2
+              value: 2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Avaria'
+            examples:
+              AvariaExemplo01:
+                $ref: '#/components/examples/AvariaExemplo01'
+              AvariaExemplo02:
+                $ref: '#/components/examples/AvariaExemplo02'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                description: Avarias PUT success
+                x-content-type: application/json
+        '400':
+          description: Bad request
+        '404':
+          description: Id not found
+      x-swagger-router-controller: AvariasController
+    delete:
+      tags:
+        - AvariasController
+      summary: Delete Avaria
+      operationId: deleteAvaria
+      parameters:
+        - name: id
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            minimum: 1
+            type: integer
+            format: int64
+          examples:
+            one:
+              summary: Delete Avarias id 1
+              value: 1
+            two:
+              summary: Delete Avarias id 2
+              value: 2
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Id not found
+      x-swagger-router-controller: AvariasController
+
+  /antenas:
+    get:
+      tags:
+        - AntenasController
+      summary: Retrieve Antenas
+      operationId: retrieveAntenas
+      responses:
+        '200':
+          description: Array of Antenas model instances
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Antena'
+                x-content-type: application/json
+      x-swagger-router-controller: AntenasController
+    post:
+      tags:
+        - AntenasController
+      summary: Create Antena
+      operationId: createAntena
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Antena'
+      responses:
+        '200':
+          description: Create a Antena model instance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Antena'
+      x-swagger-router-controller: AntenaController
+
+  /antenas/{id}:
+    get:
+      tags:
+        - AntenasController
+      summary: Retrieve Antena
+      operationId: retrieveAntena
+      parameters:
+        - name: id
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            minimum: 1
+            type: integer
+            format: int64
+          examples:
+            one:
+              summary: Retrieve Antena id 1
+              value: 1
+            two:
+              summary: Retrieve Antena id 2
+              value: 2
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Antena'
+        '400':
+          description: Bad request
+        '404':
+          description: Id not found
+      x-swagger-router-controller: AntenasController
+    put:
+      tags:
+        - AntenasController
+      summary: Update Antena
+      operationId: updateAntena
+      parameters:
+        - name: id
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            minimum: 1
+            type: integer
+            format: int64
+          examples:
+            one:
+              summary: Update Antenas id 1
+              value: 1
+            two:
+              summary: Update Antenas id 2
+              value: 2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Antena'
+            examples:
+              AntenaExemplo01:
+                $ref: '#/components/examples/AntenaExemplo01'
+              AntenaExemplo02:
+                $ref: '#/components/examples/AntenaExemplo02'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                description: Antenas PUT success
+                x-content-type: application/json
+        '400':
+          description: Bad request
+        '404':
+          description: Id not found
+      x-swagger-router-controller: AntenasController
+    delete:
+      tags:
+        - AntenasController
+      summary: Delete Antena
+      operationId: deleteAntena
+      parameters:
+        - name: id
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            minimum: 1
+            type: integer
+            format: int64
+          examples:
+            one:
+              summary: Delete Antenas id 1
+              value: 1
+            two:
+              summary: Delete Antenas id 2
+              value: 2
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Id not found
+      x-swagger-router-controller: AntenasController
+
+  /antenas_favoritas:
+    get:
+      tags:
+        - AntenasFavoritasController
+      summary: Retrieve Antenas Favoritas
+      operationId: retrieveAntenasFavoritas
+      responses:
+        '200':
+          description: Array of Antenas Favoritas model instances
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AntenaFavorita'
+                x-content-type: application/json
+      x-swagger-router-controller: AntenasFavoritasController
+    post:
+      tags:
+        - AntenasFavoritasController
+      summary: Create Antena Favorita
+      operationId: createAntenaFavorita
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AntenaFavorita'
+      responses:
+        '200':
+          description: Create a Antena Favorita model instance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AntenaFavorita'
+      x-swagger-router-controller: AntenaFavoritaController
+
+  /antenas_favoritas/{id}:
+    delete:
+      tags:
+        - AntenasFavoritasController
+      summary: Delete Antena Favorita
+      operationId: deleteAntenaFavorita
+      parameters:
+        - name: id
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            minimum: 1
+            type: integer
+            format: int64
+          examples:
+            one:
+              summary: Delete Antena Favorita id 1
+              value: 1
+            two:
+              summary: Delete Antena Favorita id 2
+              value: 2
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Id not found
+      x-swagger-router-controller: AntenasFavoritasController
+
+  /comentarios:
+    get:
+      tags:
+        - ComentariosController
+      summary: Retrieve Comentarios
+      operationId: retrieveComentarios
+      responses:
+        '200':
+          description: Array of Comentarios model instances
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Comentario'
+                x-content-type: application/json
+      x-swagger-router-controller: ComentariosController
+    post:
+      tags:
+        - ComentariosController
+      summary: Create Comentario
+      operationId: createComentario
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Comentario'
+      responses:
+        '200':
+          description: Create a Comentario model instance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comentario'
+      x-swagger-router-controller: ComentarioController
+
+  /comentarios/{id}:
+    delete:
+      tags:
+        - ComentariosController
+      summary: Delete Comentario
+      operationId: deleteComentario
+      parameters:
+        - name: id
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            minimum: 1
+            type: integer
+            format: int64
+          examples:
+            one:
+              summary: Delete Comentario id 1
+              value: 1
+            two:
+              summary: Delete Comentario id 2
+              value: 2
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Id not found
+      x-swagger-router-controller: ComentariosController
+
+components:
+  schemas:
+    #avaria feita
+    Avaria:
+      title: Avaria
+      required:
+        - nome
+        - status
+        - id_utilizador
+        - data_abertura
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        nome:
+          type: string
+        id_utilizador:
+          type: integer
+          format: int64
+        status:
+          type: boolean
+        data_abertura:
+          type: string
+          format: date-time
+        data_conclusao:
+          type: string
+          format: date-time
+        detalhe:
+          type: string
+
+      example:
+        id: 1
+        nome: Antena Espinho
+        id_utilizador: 33432
+        status: true
+        data_abertura: '2017-07-21T17:32:28Z'
+        data_conclusao: ''
+        detalhe: SITE DOWN
+
+    #antena
+    Antena:
+      title: Antena
+      required:
+        - nome
+        - coordenadas
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        nome:
+          type: string
+        coordenadas:
+          type: string
+
+      example:
+        id: 1
+        nome: Antena Espinho
+        coordenadas: '41.007336, -8.633650'
+
+    #antenaFavorita
+    AntenaFavorita:
+      title: Antena Favorita
+      required:
+        - id_utilizador
+        - id_antena
+      type: object
+      properties:
+        id_utilizador:
+          type: integer
+          format: int64
+        id_antena:
+          type: integer
+          format: int64
+
+      example:
+        id: 1
+        id_utilizador: 1
+        id_antena: 1
+
+    #comentarios
+    Comentario:
+      title: Comentario
+      required:
+        - id_utilizador
+        - id_antena
+      type: object
+      properties:
+        id_utilizador:
+          type: integer
+          format: int64
+        id_antena:
+          type: integer
+          format: int64
+
+      example:
+        id: 1
+        id_utilizador: 1
+        id_antena: 1
+
+  examples:
+    AvariaExemplo01:
+      value:
+        id: 1
+        nome: Antena Espinho
+        id_utilizador: 33432
+        status: true
+        data_abertura: '2017-07-21T17:32:28Z'
+        data_conclusao: ''
+        detalhe: SITE DOWN
+
+    AvariaExemplo02:
+      value:
+        id: 2
+        nome: Antena Braga
+        id_utilizador: 32332
+        status: false
+        data_abertura: '2019-07-21T17:32:28Z'
+        data_conclusao: '2019-07-27T17:32:28Z'
+        detalhe: ''
+
+    AntenaExemplo01:
+      value:
+        id: 1
+        nome: Antena Espinho
+        coordenadas: '41.007336, -8.633650'
+
+    AntenaExemplo02:
+      value:
+        id: 2
+        nome: Antena Braga
+        coordenadas: '41.552277, -8.424503'
+
+    ComentarioExemplo01:
+      value:
+        id: 1
+        id_utilizador: 1
+        id_antena: 1
+        conteudo: Antena sem baterias
+        timestamp: 10-04-2021 09:00:00
+
+    ComentarioExemplo02:
+      value:
+        id: 2
+        id_utilizador: 1
+        id_antena: 1
+        conteudo: Antena sem energia
+        timestamp: 10-04-2021 09:00:00
