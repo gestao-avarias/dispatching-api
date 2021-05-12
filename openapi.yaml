@@ -159,6 +159,152 @@ paths:
           description: Id not found
       x-swagger-router-controller: AvariasController
 
+  /antenas:
+  get:
+    tags:
+      - AntenasController
+    summary: Retrieve Antenas
+    operationId: retrieveAntenas
+    responses:
+      '200':
+        description: Array of Antenas model instances
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Antena'
+              x-content-type: application/json
+    x-swagger-router-controller: AntenasController
+  post:
+    tags:
+      - AntenasController
+    summary: Create Antena
+    operationId: createAntena
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Antena'
+    responses:
+      '200':
+        description: Create a Antena model instance
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Antena'
+    x-swagger-router-controller: AntenaController
+
+  /antenas/{id}:
+  get:
+    tags:
+      - AntenasController
+    summary: Retrieve Antena
+    operationId: retrieveAntena
+    parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Retrieve Antena id 1
+            value: 1
+          two:
+            summary: Retrieve Antena id 2
+            value: 2
+    responses:
+      '200':
+        description: Success
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Antena'
+      '400':
+        description: Bad request
+      '404':
+        description: Id not found
+    x-swagger-router-controller: AntenasController
+  put:
+    tags:
+      - AntenasController
+    summary: Update Antena
+    operationId: updateAntena
+    parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Update Antenas id 1
+            value: 1
+          two:
+            summary: Update Antenas id 2
+            value: 2
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Antena'
+          examples:
+            AntenaExemplo01:
+              $ref: '#/components/examples/AntenaExemplo01'
+            AntenaExemplo02:
+              $ref: '#/components/examples/AntenaExemplo02'
+      required: true
+    responses:
+      '200':
+        description: Success
+        content:
+          application/json:
+            schema:
+              description: Antenas PUT success
+              x-content-type: application/json
+      '400':
+        description: Bad request
+      '404':
+        description: Id not found
+    x-swagger-router-controller: AntenasController
+  delete:
+    tags:
+      - AntenasController
+    summary: Delete Antena
+    operationId: deleteAntena
+    parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Delete Antenas id 1
+            value: 1
+          two:
+            summary: Delete Antenas id 2
+            value: 2
+    responses:
+      '204':
+        description: No Content
+      '404':
+        description: Id not found
+    x-swagger-router-controller: AntenasController
+
 components:
   schemas:
     #avaria feita
@@ -199,6 +345,29 @@ components:
         data_conclusao: ''
         detalhe: SITE DOWN
 
+    #antena
+  
+    Antena:
+      title: Antena
+      required:
+          - nome
+          - coordenadas
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        nome:
+          type: string
+        coordenadas:
+          type: string
+      
+      example:
+      
+        id: 1
+        nome: Antena Espinho
+        coordenadas: '41.007336, -8.633650'
+
   examples:
     AvariaExemplo01:
       value:
@@ -219,3 +388,15 @@ components:
         data_abertura: '2019-07-21T17:32:28Z'
         data_conclusao: '2019-07-27T17:32:28Z'
         detalhe: ''
+
+    AntenaExemplo01:
+      value:
+        id: 1
+        nome: Antena Espinho
+        coordenadas: '41.007336, -8.633650'
+  
+    AntenaExemplo02:
+      value:
+        id: 2
+        nome: Antena Braga
+        coordenadas: '41.552277, -8.424503'
