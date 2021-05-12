@@ -1,0 +1,221 @@
+openapi: 3.0.0
+info:
+  title: Schedules
+  description: Dispatching
+  contact:
+    name: a037264, a036284, a036761
+    email: a037264@ismai.pt, a036284@ismai.pt, a036761@ismai.pt
+  version: 0.0.1
+servers:
+  - url: http://localhost:8080
+    description: Meu localhost
+    variables:
+      basePath:
+        default: /
+paths:
+  /avarias:
+    get:
+      tags:
+        - AvariasController
+      summary: Retrieve Avarias
+      operationId: retrieveAvarias
+      responses:
+        '200':
+          description: Array of Avarias model instances
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Avaria'
+                x-content-type: application/json
+      x-swagger-router-controller: LessonsController
+    post:
+      tags:
+        - AvariasController
+      summary: Create Avaria
+      operationId: createAvaria
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Avaria'
+      responses:
+        '200':
+          description: Create a Avaria model instance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Avaria'
+      x-swagger-router-controller: AvariaController
+
+  /avarias/{id}:
+    get:
+      tags:
+        - AvariasController
+      summary: Retrieve Avaria
+      operationId: retrieveAvaria
+      parameters:
+        - name: id
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            minimum: 1
+            type: integer
+            format: int64
+          examples:
+            one:
+              summary: Retrieve Avaria id 1
+              value: 1
+            two:
+              summary: Retrieve Avaria id 2
+              value: 2
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Avaria'
+        '400':
+          description: Bad request
+        '404':
+          description: Id not found
+      x-swagger-router-controller: AvariasController
+    put:
+      tags:
+        - AvariasController
+      summary: Update Avaria
+      operationId: updateAvaria
+      parameters:
+        - name: id
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            minimum: 1
+            type: integer
+            format: int64
+          examples:
+            one:
+              summary: Update Lessons id 1
+              value: 1
+            two:
+              summary: Update Lessons id 2
+              value: 2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Avaria'
+            examples:
+              AvariaExemplo01:
+                $ref: '#/components/examples/AvariaExemplo01'
+              AvariaExemplo02:
+                $ref: '#/components/examples/AvariaExemplo02'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                description: Avarias PUT success
+                x-content-type: application/json
+        '400':
+          description: Bad request
+        '404':
+          description: Id not found
+      x-swagger-router-controller: AvariasController
+    delete:
+      tags:
+        - AvariasController
+      summary: Delete Avaria
+      operationId: deleteAvaria
+      parameters:
+        - name: id
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            minimum: 1
+            type: integer
+            format: int64
+          examples:
+            one:
+              summary: Delete Avarias id 1
+              value: 1
+            two:
+              summary: Delete Avarias id 2
+              value: 2
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Id not found
+      x-swagger-router-controller: AvariasController
+
+components:
+  schemas:
+    #avaria feita
+    Avaria:
+      title: Avaria
+      required:
+        - nome
+        - status
+        - id_utilizador
+        - data_abertura
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        nome:
+          type: string
+        id_utilizador:
+          type: integer
+          format: int64
+        status:
+          type: boolean
+        data_abertura:
+          type: string
+          format: date-time
+        data_conclusao:
+          type: string
+          format: date-time
+        detalhe:
+          type: string
+
+      example:
+        id: 1
+        nome: Antena Espinho
+        id_utilizador: 33432
+        status: true
+        data_abertura: '2017-07-21T17:32:28Z'
+        data_conclusao: ''
+        detalhe: SITE DOWN
+
+  examples:
+    AvariaExemplo01:
+      value:
+        id: 1
+        nome: Antena Espinho
+        id_utilizador: 33432
+        status: true
+        data_abertura: '2017-07-21T17:32:28Z'
+        data_conclusao: ''
+        detalhe: SITE DOWN
+
+    AvariaExemplo02:
+      value:
+        id: 2
+        nome: Antena Braga
+        id_utilizador: 32332
+        status: false
+        data_abertura: '2019-07-21T17:32:28Z'
+        data_conclusao: '2019-07-27T17:32:28Z'
+        detalhe: ''
