@@ -370,6 +370,73 @@ paths:
         '404':
           description: Id not found
       x-swagger-router-controller: AntenasFavoritasController
+
+  /comentarios:
+    get:
+      tags:
+        - ComentariosController
+      summary: Retrieve Comentarios
+      operationId: retrieveComentarios
+      responses:
+        '200':
+          description: Array of Comentarios model instances
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Comentario'
+                x-content-type: application/json
+      x-swagger-router-controller: ComentariosController
+    post:
+      tags:
+        - ComentariosController
+      summary: Create Comentario
+      operationId: createComentario
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Comentario'
+      responses:
+        '200':
+          description: Create a Comentario model instance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comentario'
+      x-swagger-router-controller: ComentarioController
+
+  /comentarios/{id}:
+    delete:
+      tags:
+        - ComentariosController
+      summary: Delete Comentario
+      operationId: deleteComentario
+      parameters:
+        - name: id
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            minimum: 1
+            type: integer
+            format: int64
+          examples:
+            one:
+              summary: Delete Comentario id 1
+              value: 1
+            two:
+              summary: Delete Comentario id 2
+              value: 2
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Id not found
+      x-swagger-router-controller: ComentariosController
+
 components:
   schemas:
     #avaria feita
@@ -434,6 +501,26 @@ components:
     #antenaFavorita
     AntenaFavorita:
       title: Antena Favorita
+      required:
+        - id_utilizador
+        - id_antena
+      type: object
+      properties:
+        id_utilizador:
+          type: integer
+          format: int64
+        id_antena:
+          type: integer
+          format: int64
+
+      example:
+        id: 1
+        id_utilizador: 1
+        id_antena: 1
+
+    #comentarios
+    Comentario:
+      title: Comentario
       required:
         - id_utilizador
         - id_antena
