@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 # Swagger generated server
 
 ## Overview
