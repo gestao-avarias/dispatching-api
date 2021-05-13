@@ -16,15 +16,11 @@ Este repositório servirá para hospedar o projeto desenvolvido pelo grupo 21, f
 
 ## Breve descrição do tema
 
-> > > > > > > 3e976a4d518592bb0e8654500a7fbbca23244a5f
-
 ```
 npm start
 ```
 
 To view the Swagger UI interface:
-
-<<<<<<< HEAD
 
 ```
 open http://localhost:8080/docs
@@ -88,4 +84,3 @@ _Please add at least on section (a file) per Chapter. But you can add more._
 
 - Marco Amaro Oliveira [@MarcoOliveira](https://github.com/marcoamarooliveira)
 - Other team members
-  > > > > > > > 3e976a4d518592bb0e8654500a7fbbca23244a5f
