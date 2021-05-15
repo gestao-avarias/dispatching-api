@@ -3,14 +3,8 @@
 var utils = require('../utils/writer.js');
 var ComentariosController = require('../service/ComentariosControllerService');
 
-module.exports.createComentario = function createComentario(
-  req,
-  res,
-  next,
-  body,
-) {
+module.exports.createComentario = function createComentario (req, res, next, body) {
   ComentariosController.createComentario(body)
-    .then(ComentariosController.retrieveComentarios)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -19,12 +13,7 @@ module.exports.createComentario = function createComentario(
     });
 };
 
-module.exports.deleteComentario = function deleteComentario(
-  req,
-  res,
-  next,
-  id,
-) {
+module.exports.deleteComentario = function deleteComentario (req, res, next, id) {
   ComentariosController.deleteComentario(id)
     .then(function (response) {
       utils.writeJson(res, response);
@@ -34,11 +23,7 @@ module.exports.deleteComentario = function deleteComentario(
     });
 };
 
-module.exports.retrieveComentarios = function retrieveComentarios(
-  req,
-  res,
-  next,
-) {
+module.exports.retrieveComentarios = function retrieveComentarios (req, res, next) {
   ComentariosController.retrieveComentarios()
     .then(function (response) {
       utils.writeJson(res, response);

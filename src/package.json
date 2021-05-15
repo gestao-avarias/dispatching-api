@@ -1,7 +1,7 @@
 {
-  "name": "schedules",
+  "name": "gest-o-avarias",
   "version": "0.0.1",
-  "description": "Tutorial ‘OAS01’",
+  "description": "Dispatching",
   "main": "index.js",
   "scripts": {
     "prestart": "npm install",
