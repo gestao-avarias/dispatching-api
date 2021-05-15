@@ -2,16 +2,18 @@
 
 Este repositório servirá para hospedar o projeto desenvolvido pelo grupo 21, formado por [Sergio Ferreira](https://github.com/SergioDanielOsorioFerreira), [Lucas Sá](https://github.com/lucassodresa), [Tiago Silva](https://github.com/TiagoSVA) da turma B, do 2º ano, da **Licenciatura de Informática** do [ISMAI](https://www.ismai.pt/pt).
 
+Como **orientador** temos o docente [Marco Amaro Oliveira](https://github.com/MarcoAmaroOliveira).
+
 ## Breve descrição do tema
 
-An example report using markdown on Github. This documentation is writen using [Markdown](https://www.markdownguide.org/). Here is a [link to the basic syntax](https://www.markdownguide.org/basic-syntax), but an [extended syntax](https://www.markdownguide.org/extended-syntax/) is also available. If you're starting with Markdown, you may want to try a [Markdown Tutorial](https://www.markdowntutorial.com/) and read the [getting started](https://www.markdownguide.org/getting-started/) section.
+Este trabalho é sobre avaria a gestão de avarias das antenas.
 
-## Repository organization
+## Organização de repositório
 
 _Please help reader navigate around describing how the repository is organized by providing links_
 
-- **Source code** is in the [src folder](https://github.com/exemploTrabalho/report/src).
-- Report chapters are in [doc folder](https://github.com/exemploTrabalho/report/doc).
+- **Source code** está na [pasta src](https://github.com/gestao-avarias/dispatching-api/tree/master/src).
+- Report chapters estão no [pasta doc](https://github.com/gestao-avarias/dispatching-api/tree/master/doc).
 
 ## Gallery
 
@@ -20,25 +22,14 @@ A [table](https://www.markdownguide.org/extended-syntax/#tables) may be usefull 
 
 ## Technologies
 
-_Indicate the technologies you have used in this assignment. Please provide links for the user to read more about those technologies._
+- [JSON](https://www.json.org)
+- [NodeJS](https://nodejs.org)
+- [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [OpenAPI 3.0](https://swagger.io)
 
-- XML
-- HTML5 + CSS3
-- Javascript
-- PHP
-- nodeJS
-- _Any other?_
+### Frameworks e Bibliotecas
 
-### Frameworks and Libraries
-
-_Did you use any aditional libraries? Describe them here._
-
-- Docker
-- Multipass
 - NodeJS
-- JQuery
-- Laravel
-- Bootstrap
 
 ## Report
 
