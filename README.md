@@ -10,10 +10,8 @@ Este trabalho é sobre avaria a gestão de avarias das antenas.
 
 ## Organização de repositório
 
-_Please help reader navigate around describing how the repository is organized by providing links_
-
-- **Source code** está na [pasta src](https://github.com/gestao-avarias/dispatching-api/tree/master/src).
-- Report chapters estão no [pasta doc](https://github.com/gestao-avarias/dispatching-api/tree/master/doc).
+- **Código fonte** está na [pasta src](https://github.com/gestao-avarias/dispatching-api/tree/master/src).
+- Capítulos do relatório estão na [pasta doc](https://github.com/gestao-avarias/dispatching-api/tree/master/doc).
 
 ## Gallery
 
