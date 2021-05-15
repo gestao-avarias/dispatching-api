@@ -13,12 +13,12 @@ Este trabalho é sobre avaria a gestão de avarias das antenas.
 - **Código fonte** está na [pasta src](https://github.com/gestao-avarias/dispatching-api/tree/master/src).
 - Capítulos do relatório estão na [pasta doc](https://github.com/gestao-avarias/dispatching-api/tree/master/doc).
 
-## Gallery
+## Galeria
 
 _Please provide a galery of the final result, with small images_
 A [table](https://www.markdownguide.org/extended-syntax/#tables) may be usefull to organize the images.
 
-## Technologies
+## Tecnologias
 
 - [JSON](https://www.json.org)
 - [NodeJS](https://nodejs.org)
@@ -28,28 +28,31 @@ A [table](https://www.markdownguide.org/extended-syntax/#tables) may be usefull 
 ### Frameworks e Bibliotecas
 
 - NodeJS
+- Swagger
 
-## Report
+## Relatório
 
 _Please add at least on section (a file) per Chapter. But you can add more._
 
-### Project presentation
+### Apresentação do projeto
 
 - Chapter 1: [Project presentation](doc/c1.md)
 
-### User Interface
+### Interface de utilizador
 
 - Chapter 2: [User Interface Prototype and Sitemap](doc/c2.md)
 
-### Product
+### Produto
 
 - Chapter 3: [Product](doc/c3.md)
 
-### Presentation
+### Apresentação
 
 - Chapter 4: [Presentation](doc/c4.md)
 
-## Team
+## Grupo 21
 
-- Marco Amaro Oliveira [@MarcoOliveira](https://github.com/marcoamarooliveira)
-- Other team members
+- **Orientador** Marco Amaro Oliveira [@MarcoOliveira](https://github.com/marcoamarooliveira)
+- Lucas Sá [@LucasSá](https://github.com/lucassodresa)
+- Sérgio Ferreira [@SérgioFerreira](https://github.com/SergioDanielOsorioFerreira)
+- Tiago Silva [@TiagoSilva](https://github.com/TiagoSva)
