@@ -29,7 +29,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/Avaria'
                 x-content-type: application/json
-      x-swagger-router-controller: LessonsController
+      x-swagger-router-controller: AvariasController
     post:
       tags:
       - AvariasController
@@ -163,6 +163,15 @@ paths:
       - AntenasController
       summary: Retrieve Antenas
       operationId: retrieveAntenas
+      parameters:
+      - name: nome
+        in: query
+        description: Array filter by name of Antena
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
       responses:
         "200":
           description: Array of Antenas model instances
@@ -301,6 +310,159 @@ paths:
         "404":
           description: Id not found
       x-swagger-router-controller: AntenasController
+  /utilizadores:
+    get:
+      tags:
+      - UtilizadoresController
+      summary: Retrieve Utilizadores
+      operationId: retrieveUtilizadores
+      parameters:
+      - name: cargo
+        in: query
+        description: Array filter by cargo of Utilizador
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Array of Utilizadores model instances
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Utilizador'
+                x-content-type: application/json
+      x-swagger-router-controller: UtilizadoresController
+    post:
+      tags:
+      - UtilizadoresController
+      summary: Create Utilizador
+      operationId: createUtilizador
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Utilizador'
+      responses:
+        "200":
+          description: Create a Utilizador model instance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Utilizador'
+      x-swagger-router-controller: UtilizadoresController
+  /utilizadores/{id}:
+    get:
+      tags:
+      - UtilizadoresController
+      summary: Retrieve Utilizador
+      operationId: retrieveUtilizador
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Retrieve Utilizador id 1
+            value: 1
+          two:
+            summary: Retrieve Utilizador id 2
+            value: 2
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Utilizador'
+        "400":
+          description: Bad request
+        "404":
+          description: Id not found
+      x-swagger-router-controller: UtilizadoresController
+    put:
+      tags:
+      - UtilizadoresController
+      summary: Update Utilizador
+      operationId: updateUtilizador
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Update Utilizadores id 1
+            value: 1
+          two:
+            summary: Update Utilizadores id 2
+            value: 2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Utilizador'
+            examples:
+              AntenaExemplo01:
+                $ref: '#/components/examples/UtilizadorExemplo01'
+              AntenaExemplo02:
+                $ref: '#/components/examples/UtilizadorExemplo02'
+        required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                description: Utilizadores PUT success
+                x-content-type: application/json
+        "400":
+          description: Bad request
+        "404":
+          description: Id not found
+      x-swagger-router-controller: UtilizadoresController
+    delete:
+      tags:
+      - UtilizadoresController
+      summary: Delete Utilizador
+      operationId: deleteUtilizador
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Delete Utilizadores id 1
+            value: 1
+          two:
+            summary: Delete Utilizadores id 2
+            value: 2
+      responses:
+        "204":
+          description: No Content
+        "404":
+          description: Id not found
+      x-swagger-router-controller: UtilizadoresController
   /antenas_favoritas:
     get:
       tags:
@@ -469,7 +631,8 @@ components:
     Antena:
       title: Antena
       required:
-      - coordenadas
+      - latitude
+      - longitude
       - nome
       type: object
       properties:
@@ -478,8 +641,10 @@ components:
           format: int64
         nome:
           type: string
-        coordenadas:
-          type: string
+        latidude:
+          type: number
+        longitude:
+          type: number
       example:
         id: 1
         nome: Antena Espinho
@@ -524,6 +689,33 @@ components:
         id_antena: 1
         conteudo: Antena sem baterias
         timestamp: 10-04-2021 09:00:00
+    Utilizador:
+      title: Utilizador
+      required:
+      - cargo
+      - email
+      - nome
+      - password
+      - telefone
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        nome:
+          type: string
+        cargo:
+          type: string
+        telefone:
+          type: string
+        password:
+          type: string
+      example:
+        id: 1
+        nome: Lucas
+        cargo: Admin
+        telefone: 919999999
+        password: Admin123
   examples:
     AvariaExemplo01:
       value:
@@ -547,12 +739,14 @@ components:
       value:
         id: 1
         nome: Antena Espinho
-        coordenadas: "41.007336, -8.633650"
+        latitude: "41.007336"
+        longitude: "-8.633650"
     AntenaExemplo02:
       value:
         id: 2
         nome: Antena Braga
-        coordenadas: "41.552277, -8.424503"
+        latitude: "41.552277"
+        longitude: "-8.424503"
     ComentarioExemplo01:
       value:
         id: 1
@@ -567,3 +761,17 @@ components:
         id_antena: 1
         conteudo: Antena sem energia
         timestamp: 10-04-2021 09:00:00
+    UtilizadorExemplo01:
+      value:
+        id: 1
+        nome: Sergio
+        cargo: tecnico
+        telefone: 919999998
+        password: Tecnico123
+    UtilizadorExemplo02:
+      value:
+        id: 2
+        nome: Tiago
+        cargo: gestor
+        telefone: 919999997
+        password: Gestor123
