@@ -9,17 +9,19 @@ var sql = require('../utils/db.js');
  **/
 exports.createAntena = function (body) {
   return new Promise(function (resolve, reject) {
-    console.log(body);
-    sql.query("INSERT INTO antena (nome, coordenadas) Values(?,?)", [body.nome, body.coordenadas], function(err, res){
-      if (err) {
-        console.log(err);
-        reject(err);
-      }
-      else {
-        console.log(res.insertId);
-        resolve(res.insertId);
-      }
-    });
+    sql.query(
+      'INSERT INTO antena (nome, latitude, longitude) Values(?, ?, ?)',
+      [body.nome, body.latitude, body.longitude],
+      function (err, res) {
+        if (err) {
+          console.log(err);
+          reject(err);
+        } else {
+          console.log(res.insertId);
+          resolve(res.insertId);
+        }
+      },
+    );
   });
 };
 
@@ -29,19 +31,19 @@ exports.createAntena = function (body) {
  * id Long
  * no response value expected for this operation
  **/
-exports.deleteAntena = function (id) { //ok
+exports.deleteAntena = function (id) {
+  //ok
   return new Promise(function (resolve, reject) {
-    sql.query("DELETE FROM antena WHERE id = ?", [id], function(err, res) {
+    sql.query('DELETE FROM antena WHERE id = ?', [id], function (err, res) {
       if (err || !res.affectedRows) {
         console.log(err);
         console.log(res);
         reject();
-      }
-      else {
+      } else {
         console.log(res);
-        resolve({"deleted": id})
+        resolve({ deleted: id });
       }
-    }); 
+    });
   });
 };
 
@@ -51,14 +53,14 @@ exports.deleteAntena = function (id) { //ok
  * id Long
  * returns Antena
  **/
-exports.retrieveAntena = function (id) { //ok
+exports.retrieveAntena = function (id) {
+  //ok
   return new Promise(function (resolve, reject) {
-    sql.query("SELECT * FROM antena WHERE id = ?", [id], function (err, res) {
+    sql.query('SELECT * FROM antena WHERE id = ?', [id], function (err, res) {
       if (err) {
         console.log(err);
         reject(err);
-      }
-      else {
+      } else {
         console.log(res);
         resolve(res[0]);
       }
@@ -71,18 +73,26 @@ exports.retrieveAntena = function (id) { //ok
  *
  * returns List
  **/
-exports.retrieveAntenas = function () { //ok
+exports.retrieveAntenas = function (nome) {
+  //ok
   return new Promise(function (resolve, reject) {
-    sql.query("SELECT * FROM antena", function (err, res) {
+    const callback = function (err, res) {
       if (err) {
         console.log(err);
         reject(err);
-      }
-      else {
+      } else {
         console.log(res);
         resolve(res);
       }
-    });
+    };
+
+    let queryString = 'SELECT * FROM antena';
+
+    if (nome) {
+      queryString = `SELECT * FROM antena where nome like '%${nome}%'`;
+    }
+
+    sql.query(queryString, callback);
   });
 };
 
@@ -93,18 +103,22 @@ exports.retrieveAntenas = function () { //ok
  * id Long
  * no response value expected for this operation
  **/
-exports.updateAntena = function (body, id) { // ok
+exports.updateAntena = function (body, id) {
+  // ok
   return new Promise(function (resolve, reject) {
     console.log(body);
-    sql.query("UPDATE antena set nome = ?, coordenadas = ? WHERE id = ?", [body.nome, body.coordenadas, id], function (err, res) {
-      if (err) {
-        console.log(err);
-        reject(err);
-      }
-      else {
-        console.log(res);
-        resolve(id);
-      }
-    })
+    sql.query(
+      'UPDATE antena set nome = ?, latitude = ?, longitude = ?,  WHERE id = ?',
+      [body.nome, body.latitude, body.longitude, id],
+      function (err, res) {
+        if (err) {
+          console.log(err);
+          reject(err);
+        } else {
+          console.log(res);
+          resolve(id);
+        }
+      },
+    );
   });
 };
