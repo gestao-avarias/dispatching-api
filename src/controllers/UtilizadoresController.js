@@ -5,6 +5,7 @@ var UtilizadoresController = require('../service/UtilizadoresControllerService')
 
 module.exports.createUtilizador = function createUtilizador (req, res, next, body) {
   UtilizadoresController.createUtilizador(body)
+  .then(UtilizadoresController.retrieveUtilizador)
     .then(function (response) {
       utils.writeJson(res, response);
     })
