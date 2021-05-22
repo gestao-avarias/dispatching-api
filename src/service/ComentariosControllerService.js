@@ -9,9 +9,10 @@ var sql = require('../utils/db.js');
  **/
 exports.createComentario = function (body) {
   return new Promise(function (resolve, reject) {
+    console.log(new Date().getTime())
     sql.query(
-      'INSERT INTO comentarios (id_autor, id_antena, conteudo) Values(?, ?, ?)',
-      [body.id_autor, body.id_antena, body.conteudo],
+      'INSERT INTO comentarios (id_utilizador, id_antena, conteudo, data_criacao) Values(?, ?, ?, ?)',
+      [body.id_utilizador, body.id_antena, body.conteudo, new Date().getTime()],
       function (err, res) {
         if (err) {
           console.log(err);
@@ -34,7 +35,7 @@ exports.createComentario = function (body) {
 exports.deleteComentario = function (id) {
   return new Promise(function (resolve, reject) {
     sql.query(
-      'DELETE FROM antena_favorita WHERE id = ?',
+      'DELETE FROM comentarios WHERE id = ?',
       [id],
       function (err, res) {
         if (err || !res.affectedRows) {
@@ -43,7 +44,7 @@ exports.deleteComentario = function (id) {
           reject();
         } else {
           console.log(res);
-          resolve({ deleted: id_utilizador + '/' + id_antena });
+          resolve({ deleted: id });
         }
       },
     );
@@ -55,29 +56,25 @@ exports.deleteComentario = function (id) {
  *
  * returns List
  **/
-exports.retrieveComentarios = function () {
+exports.retrieveComentarios = function (type, id) {
   return new Promise(function (resolve, reject) {
-    var examples = {};
-    examples['application/json'] = [
-      {
-        id: 1,
-        id_utilizador: 1,
-        id_antena: 1,
-        conteudo: 'Antena sem baterias',
-        timestamp: '10-04-2021 09:00:00',
-      },
-      {
-        id: 1,
-        id_utilizador: 1,
-        id_antena: 1,
-        conteudo: 'Antena sem baterias',
-        timestamp: '10-04-2021 09:00:00',
-      },
-    ];
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    const callback = function (err, res) {
+      if (err) {
+        console.log(err);
+        reject(err);
+      } else {
+        console.log(res);
+        resolve(res);
+      }
+    };
+    
+    if(!["antena","utilizador"].includes(type)) return;
+
+    const table = type === "antena" ? "antena" : "utilizador"; 
+    const queryString = `SELECT * FROM ${table} where id = ${id}`;
+
+    
+
+    sql.query(queryString, callback);
   });
 };

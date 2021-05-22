@@ -606,7 +606,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Comentario'
-      x-swagger-router-controller: ComentarioController
+      x-swagger-router-controller: ComentariosController
   /comentarios/{id}:
     get:
       tags:
@@ -759,6 +759,7 @@ components:
       title: Comentario
       required:
       - conteudo
+      - data_criacao
       - id_antena
       - id_utilizador
       type: object
