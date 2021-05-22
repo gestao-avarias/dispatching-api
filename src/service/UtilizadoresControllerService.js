@@ -7,7 +7,8 @@ var sql = require('../utils/db.js');
  * body Utilizador  (optional)
  * returns Utilizador
  **/
-exports.createUtilizador = function(body) { // FEITO
+exports.createUtilizador = function (body) {
+  // FEITO
   return new Promise(function (resolve, reject) {
     sql.query(
       'INSERT INTO utilizador (nome, email, cargo, telefone, password) Values(?, ?, ?, ?, ?)',
@@ -23,16 +24,16 @@ exports.createUtilizador = function(body) { // FEITO
       },
     );
   });
-}
-
+};
 
 /**
  * Delete Utilizador
  *
- * id Long 
+ * id Long
  * no response value expected for this operation
  **/
-exports.deleteUtilizador = function(id) { //FEITO
+exports.deleteUtilizador = function (id) {
+  //FEITO
   return new Promise(function (resolve, reject) {
     sql.query('DELETE FROM utilizador WHERE id = ?', [id], function (err, res) {
       if (err || !res.affectedRows) {
@@ -45,29 +46,32 @@ exports.deleteUtilizador = function(id) { //FEITO
       }
     });
   });
-}
-
+};
 
 /**
  * Retrieve Utilizador
  *
- * id Long 
+ * id Long
  * returns Utilizador
  **/
-exports.retrieveUtilizador = function(id) { //FEITO
+exports.retrieveUtilizador = function (id) {
+  //FEITO
   return new Promise(function (resolve, reject) {
-    sql.query('SELECT * FROM utilizador WHERE id = ?', [id], function (err, res) {
-      if (err) {
-        console.log(err);
-        reject(err);
-      } else {
-        console.log(res);
-        resolve(res[0]);
-      }
-    });
+    sql.query(
+      'SELECT * FROM utilizador WHERE id = ?',
+      [id],
+      function (err, res) {
+        if (err) {
+          console.log(err);
+          reject(err);
+        } else {
+          console.log(res);
+          resolve(res[0]);
+        }
+      },
+    );
   });
-}
-
+};
 
 /**
  * Retrieve Utilizadores
@@ -75,7 +79,8 @@ exports.retrieveUtilizador = function(id) { //FEITO
  * cargo String Array filter by cargo of Utilizador (optional)
  * returns List
  **/
-exports.retrieveUtilizadores = function(cargo) { //FEITO
+exports.retrieveUtilizadores = function (cargo) {
+  //FEITO
   return new Promise(function (resolve, reject) {
     const callback = function (err, res) {
       if (err) {
@@ -95,17 +100,17 @@ exports.retrieveUtilizadores = function(cargo) { //FEITO
 
     sql.query(queryString, callback);
   });
-}
-
+};
 
 /**
  * Update Utilizador
  *
- * body Utilizador 
- * id Long 
+ * body Utilizador
+ * id Long
  * no response value expected for this operation
  **/
-exports.updateUtilizador = function(body,id) { //FEITO
+exports.updateUtilizador = function (body, id) {
+  //FEITO
   return new Promise(function (resolve, reject) {
     console.log(body);
     sql.query(
@@ -122,5 +127,4 @@ exports.updateUtilizador = function(body,id) { //FEITO
       },
     );
   });
-}
-
+};
