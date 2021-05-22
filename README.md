@@ -6,7 +6,7 @@ Como **orientador** temos o docente [Marco Amaro Oliveira](https://github.com/Ma
 
 ## Breve descrição do tema
 
-Este trabalho é sobre avaria a gestão de avarias das antenas.
+Neste trabalho está a ser desenvolvido uma API que serve para gerir avarias em antenas de telecomunicações. Um gestor de avarias pode atribuir tarefas ao técnico para resolver a avaria. Podendo o técnico consultar antenas, marcar antenas favoritas e deixar comentários sobre as antenas.
 
 ## Organização de repositório
 
@@ -36,19 +36,19 @@ _Please add at least on section (a file) per Chapter. But you can add more._
 
 ### Apresentação do projeto
 
-- Chapter 1: [Project presentation](doc/c1.md)
+- Capítulo 1: [Apresentação do projeto](doc/c1.md)
 
 ### Interface de utilizador
 
-- Chapter 2: [User Interface Prototype and Sitemap](doc/c2.md)
+- Capítulo 2: [Protótipo da interface de utilizador e sitemap](doc/c2.md)
 
 ### Produto
 
-- Chapter 3: [Product](doc/c3.md)
+- Capítulo 3: [Produto](doc/c3.md)
 
 ### Apresentação
 
-- Chapter 4: [Presentation](doc/c4.md)
+- Capítulo 4: [Apresentação](doc/c4.md)
 
 ## Grupo 21
 
