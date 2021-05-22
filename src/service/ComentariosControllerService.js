@@ -9,10 +9,10 @@ var sql = require('../utils/db.js');
  **/
 exports.createComentario = function (body) {
   return new Promise(function (resolve, reject) {
-    console.log(new Date().getTime());
+    console.log((() => new Date().getTime())());
     sql.query(
-      'INSERT INTO comentarios (id_utilizador, id_antena, conteudo, data_criacao) Values(?, ?, ?, ?)',
-      [body.id_utilizador, body.id_antena, body.conteudo, new Date().getTime()],
+      'INSERT INTO comentarios (id_utilizador, id_antena, conteudo, data_criacao) Values(?, ?, ?, UNIX_TIMESTAMP(CURRENT_TIMESTAMP()))',
+      [body.id_utilizador, body.id_antena, body.conteudo],
       function (err, res) {
         if (err) {
           console.log(err);

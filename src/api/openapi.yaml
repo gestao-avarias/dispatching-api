@@ -47,7 +47,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Avaria'
-      x-swagger-router-controller: AvariaController
+      x-swagger-router-controller: AvariasController
   /avarias/{id}:
     get:
       tags:
@@ -100,10 +100,10 @@ paths:
           format: int64
         examples:
           one:
-            summary: Update Lessons id 1
+            summary: Update Avaria id 1
             value: 1
           two:
-            summary: Update Lessons id 2
+            summary: Update Avaria id 2
             value: 2
       requestBody:
         content:
@@ -172,6 +172,10 @@ paths:
         explode: true
         schema:
           type: string
+        examples:
+          one:
+            summary: Antenas com a palavra 'Espinho' no nome
+            value: Espinho
       responses:
         "200":
           description: Array of Antenas model instances
@@ -325,6 +329,16 @@ paths:
         explode: true
         schema:
           type: string
+        examples:
+          one:
+            summary: Utilizadores com cargo de Admin
+            value: Admin
+          two:
+            summary: Utilizadores com cargo de Gestor
+            value: Gestor
+          three:
+            summary: Utilizadores com cargo de Tecnico
+            value: Tecnico
       responses:
         "200":
           description: Array of Utilizadores model instances
@@ -481,10 +495,10 @@ paths:
           format: int64
         examples:
           one:
-            summary: Delete Antena Favorita id 1
+            summary: Antenas Favoritas do id_utilizador 1
             value: 1
           two:
-            summary: Delete Antena Favorita id 2
+            summary: Antenas Favoritas do id_utilizador 2
             value: 2
       responses:
         "200":
@@ -515,10 +529,10 @@ paths:
           format: int64
         examples:
           one:
-            summary: Delete Antena Favorita id 1
+            summary: Create Antena Favorita id_utilizador 1
             value: 1
           two:
-            summary: Delete Antena Favorita id 2
+            summary: Create Antena Favorita id_utilizador 2
             value: 2
       - name: id_antena
         in: path
@@ -531,10 +545,10 @@ paths:
           format: int64
         examples:
           one:
-            summary: Delete Antena Favorita id 1
+            summary: Create Antena Favorita id_antena 1
             value: 1
           two:
-            summary: Delete Antena Favorita id 2
+            summary: Create Antena Favorita id_antena 2
             value: 2
       responses:
         "200":
@@ -561,10 +575,10 @@ paths:
           format: int64
         examples:
           one:
-            summary: Delete Antena Favorita id 1
+            summary: Delete Antena Favorita id_utilizador 1
             value: 1
           two:
-            summary: Delete Antena Favorita id 2
+            summary: Delete Antena Favorita id_utilizador 2
             value: 2
       - name: id_antena
         in: path
@@ -577,10 +591,10 @@ paths:
           format: int64
         examples:
           one:
-            summary: Delete Antena Favorita id 1
+            summary: Delete Antena Favorita id_antena 1
             value: 1
           two:
-            summary: Delete Antena Favorita id 2
+            summary: Delete Antena Favorita id_antena 2
             value: 2
       responses:
         "204":
@@ -622,6 +636,13 @@ paths:
         explode: true
         schema:
           type: string
+        examples:
+          por_utilizador:
+            summary: Buscar comentários de um utilizador
+            value: utilizador
+          por_antena:
+            summary: Buscar comentários de uma antena
+            value: antena
       - name: id
         in: path
         required: true
@@ -633,10 +654,10 @@ paths:
           format: int64
         examples:
           one:
-            summary: Delete Comentario id 1
+            summary: Buscar comentarios do id 1
             value: 1
           two:
-            summary: Delete Comentario id 2
+            summary: Buscar comentarios do id 2
             value: 2
       responses:
         "200":
@@ -682,11 +703,9 @@ components:
     Avaria:
       title: Avaria
       required:
-      - data_abertura
       - id_antena
       - id_utilizador
       - nome
-      - status
       type: object
       properties:
         id:
@@ -701,7 +720,8 @@ components:
           type: integer
           format: int64
         status:
-          type: boolean
+          type: integer
+          format: int32
         data_abertura:
           type: integer
           format: int64
@@ -712,12 +732,9 @@ components:
           type: string
       example:
         nome: Antena Espinho
-        id_utilizador: 33432
+        id_utilizador: 2
         id_antena: 12
-        status: true
         detalhe: Sem sinal
-        data_abertura: 1621683481201
-        data_conclusao: 1621683502168
     Antena:
       title: Antena
       required:
@@ -754,12 +771,11 @@ components:
           format: int64
       example:
         id_antena: 6
-        id_utilizador: 0
+        id_utilizador: 2
     Comentario:
       title: Comentario
       required:
       - conteudo
-      - data_criacao
       - id_antena
       - id_utilizador
       type: object
@@ -780,9 +796,8 @@ components:
           format: int64
       example:
         id_utilizador: 1
-        id_antena: 1
+        id_antena: 3
         conteudo: Antena sem baterias
-        data_criacao: 1621682832263
     Utilizador:
       title: Utilizador
       required:
@@ -815,53 +830,46 @@ components:
   examples:
     AvariaExemplo01:
       value:
-        id: 1
         nome: Antena Espinho
-        id_utilizador: 33432
+        id_utilizador: 1
         id_antena: 12
-        status: true
-        data_abertura: 1621682832263
-        data_conclusao: 1621682832263
         detalhe: SITE DOWN
     AvariaExemplo02:
       value:
-        id: 2
         nome: Antena Braga
-        id_utilizador: 32332
+        id_utilizador: 2
         id_antena: 14
-        status: false
-        data_abertura: 1621682832263
-        data_conclusao: 1621682832263
         detalhe: ""
     AntenaExemplo01:
       value:
-        id: 1
         nome: Antena Espinho
         latitude: 41.007336
         longitude: -8.63365
     AntenaExemplo02:
       value:
-        id: 2
         nome: Antena Braga
         latitude: 41.552277
         longitude: -8.424503
+    AntenaFavoritaExemplo01:
+      value:
+        id_antena: 2
+        id_utilizador: 6
+    AntenaFavoritaExemplo02:
+      value:
+        id_antena: 1
+        id_utilizador: 8
     ComentarioExemplo01:
       value:
-        id: 1
         id_utilizador: 1
-        id_antena: 1
-        conteudo: Antena sem baterias
-        data_criacao: 1621682832263
+        id_antena: 5
+        conteudo: Antena sem energia
     ComentarioExemplo02:
       value:
-        id: 2
         id_utilizador: 1
-        id_antena: 1
-        conteudo: Antena sem energia
-        data_criacao: 1621682832263
+        id_antena: 3
+        conteudo: Sem Luz
     UtilizadorExemplo01:
       value:
-        id: 1
         nome: Sergio
         email: sergio@ismai.pt
         cargo: tecnico
@@ -869,7 +877,6 @@ components:
         password: Tecnico123
     UtilizadorExemplo02:
       value:
-        id: 2
         nome: Tiago
         email: tiago@ismai.pt
         cargo: gestor

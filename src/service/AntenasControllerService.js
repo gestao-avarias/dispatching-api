@@ -106,7 +106,6 @@ exports.retrieveAntenas = function (nome) {
 exports.updateAntena = function (body, id) {
   // ok
   return new Promise(function (resolve, reject) {
-    console.log(body);
     sql.query(
       'UPDATE antena set nome = ?, latitude = ?, longitude = ?  WHERE id = ?',
       [body.nome, body.latitude, body.longitude, id],
