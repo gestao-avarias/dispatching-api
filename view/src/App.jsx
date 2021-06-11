@@ -28,7 +28,7 @@ function App() {
             </Menu>
           </Header>
         </Layout>
-        <Content>
+        <Content style={{ padding: '0 50px' }}>
           <Routes>
             <Route exact path="/" element={<HomePage />} />
             <Route path="antenas/*" element={<AntenasPage />} />
