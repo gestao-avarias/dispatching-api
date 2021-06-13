@@ -1,34 +1,28 @@
 import React from 'react';
 import { Form, Input, InputNumber, Button } from 'antd';
 import { Link } from 'react-router-dom';
+import { CREATE_ANTENA } from '../../api';
 
-// const layout = {
-//   labelCol: { span: 2 },
-//   wrapperCol: { span: 16 },
+// const validateMessages = {
+//   required: '${label} is required!',
+//   types: {
+//     email: '${label} is not a valid email!',
+//     number: '${label} is not a valid number!',
+//   },
+//   number: {
+//     range: '${label} must be between ${min} and ${max}',
+//   },
 // };
 
-/* eslint-disable no-template-curly-in-string */
-const validateMessages = {
-  required: '${label} is required!',
-  types: {
-    email: '${label} is not a valid email!',
-    number: '${label} is not a valid number!',
-  },
-  number: {
-    range: '${label} must be between ${min} and ${max}',
-  },
-};
-
 const Criar = () => {
-  const onFinish = (values) => {
-    console.log(values);
+  const onFinish = async (values) => {
+    const { url, options } = CREATE_ANTENA(values.antena);
+    await fetch(url, options);
   };
-
-  /* eslint-enable no-template-curly-in-string */
 
   return (
     <div>
-      <Link to={`/antenas`}>
+      <Link to="/antenas">
         <Button
           style={{ marginBottom: '20px' }}
           type="primary"
@@ -43,7 +37,7 @@ const Criar = () => {
         layout="vertical"
         name="nest-messages"
         onFinish={onFinish}
-        validateMessages={validateMessages}
+        // validateMessages={validateMessages}
       >
         <Form.Item
           name={['antena', 'nome']}

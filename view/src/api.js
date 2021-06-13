@@ -1,4 +1,4 @@
-export const API_URL = 'http://192.168.1.66:3005'; // arquivo de configuracao de todas as requisicoes feitas à API
+export const API_URL = 'http://localhost:8080'; // arquivo de configuracao de todas as requisicoes feitas à API
 
 export function TOKEN_POST(body) {
   return {
@@ -170,3 +170,64 @@ export function GET_DETAILS_ANTENA(token, idAntena) {
     },
   };
 }
+
+// ################################################################################
+
+// ANTENAS
+
+export function GET_ALL_ANTENA() {
+  return {
+    url: API_URL + '/antenas',
+    options: {
+      method: 'GET',
+    },
+  };
+}
+
+export function GET_ANTENA_BY_ID(id) {
+  return {
+    url: API_URL + '/antenas/' + id,
+    options: {
+      method: 'GET',
+    },
+  };
+}
+
+export function CREATE_ANTENA(body) {
+  return {
+    url: API_URL + '/antenas',
+    options: {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    },
+  };
+}
+
+export function UPDATE_ANTENA(body) {
+  return {
+    url: API_URL + '/antenas',
+    options: {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    },
+  };
+}
+
+export function DELETE_ANTENA(id) {
+  return {
+    url: API_URL + '/antenas/' + id,
+    options: {
+      method: 'DELETE',
+    },
+  };
+}
+
+// AVARIAS
+
+// COMENTARIOS

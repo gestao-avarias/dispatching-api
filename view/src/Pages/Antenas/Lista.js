@@ -1,83 +1,87 @@
 import React from 'react';
-import { Table, Tag, Space } from 'antd';
-
-const columns = [
-  {
-    title: 'Nome',
-    dataIndex: 'name',
-    key: 'name',
-    render: (text) => <a>{text}</a>,
-  },
-  {
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age',
-  },
-  {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
-  },
-  {
-    title: 'Tags',
-    key: 'tags',
-    dataIndex: 'tags',
-    render: (tags) => (
-      <>
-        {tags.map((tag) => {
-          let color = tag.length > 5 ? 'geekblue' : 'green';
-          if (tag === 'loser') {
-            color = 'volcano';
-          }
-          return (
-            <Tag color={color} key={tag}>
-              {tag.toUpperCase()}
-            </Tag>
-          );
-        })}
-      </>
-    ),
-  },
-  {
-    title: 'Action',
-    key: 'action',
-    render: (text, record) => (
-      <Space size="middle">
-        <a>Invite {record.name}</a>
-        <a>Delete</a>
-      </Space>
-    ),
-  },
-];
-
-const data = [
-  {
-    key: '1',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-    tags: ['nice', 'developer'],
-  },
-  {
-    key: '2',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    tags: ['loser'],
-  },
-  {
-    key: '3',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
-  },
-];
+import { Table, Button, Space } from 'antd';
+import { Link } from 'react-router-dom';
+import { GET_ALL_ANTENA, DELETE_ANTENA } from '../../api';
 
 const Lista = () => {
+  const [data, setData] = React.useState(null);
+
+  const columns = [
+    {
+      title: 'Nome',
+      dataIndex: 'nome',
+      key: 'nome',
+      render: (text) => {
+        return text;
+      },
+    },
+    {
+      title: 'Latitude',
+      dataIndex: 'latitude',
+      key: 'latitude',
+    },
+    {
+      title: 'Longitude',
+      dataIndex: 'longitude',
+      key: 'longitude',
+    },
+
+    {
+      title: 'Action',
+      key: 'action',
+      render: (item) => {
+        return (
+          <Space size="middle">
+            <Link to={`/antenas/${item.id}`}>Detalhes</Link>
+            <Link to={`/antenas/${item.id}/editar`}>Editar</Link>
+
+            <Link to="" onClick={() => removerAntena(item.id)}>
+              Apagar
+            </Link>
+          </Space>
+        );
+      },
+    },
+  ];
+
+  function compare(a, b) {
+    if (a.nome < b.nome) {
+      return -1;
+    }
+    if (a.nome > b.nome) {
+      return 1;
+    }
+    return 0;
+  }
+
+  async function removerAntena(id) {
+    setData(data?.filter((item) => item.id !== id).sort(compare));
+    const { url, options } = DELETE_ANTENA(id);
+    await fetch(url, options);
+  }
+
+  React.useEffect(() => {
+    (async () => {
+      const { url, options } = GET_ALL_ANTENA();
+      const response = await fetch(url, options);
+      const json = await response.json();
+      // if (!response.ok && json?.antenas?.length === 0) return null;
+
+      setData(json.sort(compare));
+    })();
+  }, []);
   return (
     <div>
-      <Table columns={columns} dataSource={data} />
+      <Link to={`/antenas/criar`}>
+        <Button
+          style={{ marginBottom: '20px' }}
+          type="primary"
+          htmlType="submit"
+        >
+          Criar Antena
+        </Button>
+      </Link>
+      <Table columns={columns} dataSource={data} rowKey="id" />
     </div>
   );
 };

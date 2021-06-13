@@ -6,9 +6,7 @@ import AntenasPage from './Pages/AntenasPage';
 import AvariasPage from './Pages/AvariasPage';
 import ComentariosPage from './Pages/ComentariosPage';
 
-import { DataStorage } from './Context/DataContext';
-
-import { Layout, Content } from 'antd';
+import { Layout } from 'antd';
 import CustomGrid from './Components/CustomGrid';
 
 // const { Content } = Layout;
