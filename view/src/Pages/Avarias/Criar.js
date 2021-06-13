@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Input, InputNumber, Select, Button, DatePicker } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
-import { CREATE_AVARIA } from '../../api';
+import { CREATE_AVARIA, GET_ALL_ANTENA, GET_ALL_UTILIZADOR } from '../../api';
 const { Option } = Select;
 // const validateMessages = {
 //   required: '${label} is required!',
@@ -16,13 +16,52 @@ const { Option } = Select;
 
 const Criar = () => {
   const navigate = useNavigate();
+
+  const [dataAntena, setDataAntena] = React.useState([]);
+  const [dataUtilizador, setDataUtilizador] = React.useState([]);
+
   const onFinish = async (values) => {
     console.log(values.avaria);
+
+    const { data_abertura } = values.avaria;
+
+    console.log(data_abertura.format('X'));
     //const { url, options } = CREATE_AVARIA(values.avaria);
     //await fetch(url, options);
     //navigate('/avarias');
-    const { Option } = Select;
   };
+
+  function compare(a, b) {
+    if (a.nome < b.nome) {
+      return -1;
+    }
+    if (a.nome > b.nome) {
+      return 1;
+    }
+    return 0;
+  }
+
+  React.useEffect(() => {
+    (async () => {
+      const { url, options } = GET_ALL_ANTENA();
+      const response = await fetch(url, options);
+      const json = await response.json();
+      // if (!response.ok && json?.antenas?.length === 0) return null;
+
+      setDataAntena(json.sort(compare));
+    })();
+  }, []);
+
+  React.useEffect(() => {
+    (async () => {
+      const { url, options } = GET_ALL_UTILIZADOR();
+      const response = await fetch(url, options);
+      const json = await response.json();
+      // if (!response.ok && json?.antenas?.length === 0) return null;
+
+      setDataUtilizador(json.sort(compare));
+    })();
+  }, []);
 
   return (
     <div>
@@ -57,7 +96,11 @@ const Criar = () => {
           rules={[{ required: true }]}
         >
           <Select placeholder="Selecionar Técnico">
-            <Option value="Zhejiang">Tiago</Option>
+            {dataUtilizador.map((item) => (
+              <Option key={item.id} value={item.id}>
+                {item.nome}
+              </Option>
+            ))}
           </Select>
         </Form.Item>
 
@@ -67,7 +110,11 @@ const Criar = () => {
           rules={[{ required: true }]}
         >
           <Select placeholder="Selecionar Antena">
-            <Option value="Zhejiang">maia</Option>
+            {dataAntena.map((item) => (
+              <Option key={item.id} value={item.id}>
+                {item.nome}
+              </Option>
+            ))}
           </Select>
         </Form.Item>
 

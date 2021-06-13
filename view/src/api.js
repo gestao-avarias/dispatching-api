@@ -144,3 +144,14 @@ export function DELETE_COMENTARIO(id) {
     },
   };
 }
+
+// UTILIZADORES
+
+export function GET_ALL_UTILIZADOR() {
+  return {
+    url: API_URL + '/utilizadores',
+    options: {
+      method: 'GET',
+    },
+  };
+}
