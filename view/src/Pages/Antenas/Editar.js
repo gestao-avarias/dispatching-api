@@ -19,10 +19,12 @@ import { UPDATE_ANTENA, GET_ANTENA_BY_ID } from '../../api';
 const Editar = () => {
   const { id } = useParams();
   const [form] = Form.useForm();
+  const navigate = useNavigate();
 
   const onFinish = async (values) => {
     const { url, options } = UPDATE_ANTENA(values.antena);
     await fetch(url, options);
+    navigate('/antenas');
   };
 
   form.setFieldsValue({
