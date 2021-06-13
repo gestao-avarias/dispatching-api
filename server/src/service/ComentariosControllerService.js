@@ -71,7 +71,7 @@ exports.retrieveComentarios = function (type, id) {
     if (!['antena', 'utilizador'].includes(type)) reject();
 
     const coluna = type === 'antena' ? 'id_antena' : 'id_utilizador';
-    const queryString = `SELECT * FROM comentarios where ${coluna} = ${id}`;
+    const queryString = `SELECT comentarios.*, utilizador.nome as nome_utilizador FROM  comentarios join utilizador on comentarios.id_utilizador = utilizador.id  where ${coluna} = ${id} `;
 
     sql.query(queryString, callback);
   });

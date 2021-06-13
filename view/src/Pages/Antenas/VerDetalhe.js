@@ -17,8 +17,8 @@ const VerDetalhe = () => {
   const columns = [
     {
       title: 'Técnico',
-      dataIndex: 'id_utilizador',
-      key: 'id_utilizador',
+      dataIndex: 'nome_utilizador',
+      key: 'nome_utilizador',
     },
 
     {
@@ -81,7 +81,7 @@ const VerDetalhe = () => {
       const response = await fetch(url, options);
       const json = await response.json();
       // if (!response.ok && json?.antenas?.length === 0) return null;
-      //   console.log(json);
+      console.log(json);
       setDataComentario(json);
     })();
   }, []);

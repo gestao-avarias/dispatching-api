@@ -8,19 +8,19 @@ const Lista = () => {
 
   const columns = [
     {
-      title: 'Nome',
+      title: 'Identificador',
       dataIndex: 'nome',
       key: 'nome',
     },
     {
       title: 'Técnico',
-      dataIndex: 'id_utilizador',
-      key: 'id_utilizador',
+      dataIndex: 'nome_utilizador',
+      key: 'nome_utilizador',
     },
     {
       title: 'Antena',
-      dataIndex: 'id_antena',
-      key: 'id_antena',
+      dataIndex: 'nome_antena',
+      key: 'nome_antena',
     },
     {
       title: 'Estado',

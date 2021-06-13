@@ -17,7 +17,7 @@ import { CREATE_AVARIA } from '../../api';
 const Criar = () => {
   const navigate = useNavigate();
   const onFinish = async (values) => {
-    console.log(values.avaria)
+    console.log(values.avaria);
     //const { url, options } = CREATE_AVARIA(values.avaria);
     //await fetch(url, options);
     //navigate('/avarias');
@@ -44,7 +44,7 @@ const Criar = () => {
       >
         <Form.Item
           name={['avaria', 'nome']}
-          label="Nome"
+          label="Identificador"
           rules={[{ required: true }]}
         >
           <Input />
@@ -80,7 +80,7 @@ const Criar = () => {
           rules={[{ required: true }]}
         >
           <DatePicker />
-        </Form.Item>    
+        </Form.Item>
 
         <Form.Item
           name={['avaria', 'detalhe']}

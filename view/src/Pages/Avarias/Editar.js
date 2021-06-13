@@ -68,7 +68,7 @@ const Editar = () => {
       >
         <Form.Item
           name={['avaria', 'nome']}
-          label="Nome"
+          label="Identificador"
           rules={[{ required: true }]}
         >
           <Input />
@@ -104,7 +104,7 @@ const Editar = () => {
           rules={[{ required: true }]}
         >
           <DatePicker />
-        </Form.Item>    
+        </Form.Item>
 
         <Form.Item
           name={['avaria', 'detalhe']}

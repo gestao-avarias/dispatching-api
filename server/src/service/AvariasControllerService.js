@@ -83,7 +83,8 @@ exports.retrieveAvarias = function () {
       }
     };
 
-    let queryString = 'SELECT * FROM avaria';
+    let queryString =
+      'SELECT avaria.*, utilizador.nome as nome_utilizador, antena.nome as nome_antena   FROM avaria join utilizador on avaria.id_utilizador = utilizador.id join antena on avaria.id_antena =  antena.id ';
 
     sql.query(queryString, callback);
   });
