@@ -1,7 +1,9 @@
 import React from 'react';
 
+import CustomGrid from '../Components/CustomGrid';
+
 const ComentariosPage = () => {
-  return <div>ComentariosPage</div>;
+  return <CustomGrid>ComentariosPage</CustomGrid>;
 };
 
 export default ComentariosPage;
