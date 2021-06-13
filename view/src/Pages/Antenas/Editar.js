@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Form, Input, InputNumber, Button } from 'antd';
 
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { UPDATE_ANTENA, GET_ANTENA_BY_ID } from '../../api';
 
 // const validateMessages = {

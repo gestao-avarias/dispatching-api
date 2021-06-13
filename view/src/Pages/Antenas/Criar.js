@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Input, InputNumber, Button } from 'antd';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { CREATE_ANTENA } from '../../api';
 const navigate = useNavigate();
 
