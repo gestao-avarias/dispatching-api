@@ -1,17 +1,12 @@
 import React from 'react';
 import { Table, Button, Space } from 'antd';
 import { Link } from 'react-router-dom';
-import { GET_ALL_AVARIA, DELETE_AVARIA } from '../../api';
+import { GET_ALL_COMENTARIO, DELETE_COMENTARIO } from '../../api';
 
 const Lista = () => {
   const [data, setData] = React.useState(null);
 
   const columns = [
-    {
-      title: 'Nome',
-      dataIndex: 'nome',
-      key: 'nome',
-    },
     {
       title: 'Técnico',
       dataIndex: 'id_utilizador',
@@ -23,36 +18,23 @@ const Lista = () => {
       key: 'id_antena',
     },
     {
-      title: 'Estado',
-      dataIndex: 'status',
-      key: 'status',
+      title: 'Conteudo',
+      dataIndex: 'conteudo',
+      key: 'conteudo',
     },
     {
-      title: 'Data Abertura',
-      dataIndex: 'data_abertura',
-      key: 'data_abertura',
+      title: 'Data Criação',
+      dataIndex: 'data_criacao',
+      key: 'data_criacao',
     },
-    {
-      title: 'Data Conclusão',
-      dataIndex: 'data_conclusao',
-      key: 'data_conclusao',
-    },
-    {
-      title: 'Detalhes',
-      dataIndex: 'detalhe',
-      key: 'detalhe',
-    },
-
+    
     {
       title: 'Action',
       key: 'action',
       render: (item) => {
         return (
           <Space size="middle">
-            <Link to={`/avarias/${item.id}`}>Detalhes</Link>
-            <Link to={`/avarias/${item.id}/editar`}>Editar</Link>
-
-            <Link to="" onClick={() => removerAvaria(item.id)}>
+            <Link to="" onClick={() => removerComentario(item.id)}>
               Apagar
             </Link>
           </Space>
@@ -71,31 +53,31 @@ const Lista = () => {
     return 0;
   }
 
-  async function removerAvaria(id) {
+  async function removerComentario(id) {
     setData(data?.filter((item) => item.id !== id).sort(compare));
-    const { url, options } = DELETE_AVARIA(id);
+    const { url, options } = DELETE_COMENTARIO(id);
     await fetch(url, options);
   }
 
   React.useEffect(() => {
     (async () => {
-      const { url, options } = GET_ALL_AVARIA();
+      const { url, options } = GET_ALL_COMENTARIO();
       const response = await fetch(url, options);
       const json = await response.json();
       // if (!response.ok && json?.antenas?.length === 0) return null;
-
-      setData(json.sort(compare));
+      console.log(json)
+      //setData(json);
     })();
   }, []);
   return (
     <div>
-      <Link to={`/avarias/criar`}>
+      <Link to={`/comentarios/criar`}>
         <Button
           style={{ marginBottom: '20px' }}
           type="primary"
           htmlType="submit"
         >
-          Criar Avaria
+          Criar Comentario
         </Button>
       </Link>
       <Table columns={columns} dataSource={data} rowKey="id" />

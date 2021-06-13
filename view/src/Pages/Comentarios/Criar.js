@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Input, InputNumber, Button, DatePicker } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
-import { CREATE_AVARIA } from '../../api';
+import { CREATE_COMENTARIO } from '../../api';
 
 // const validateMessages = {
 //   required: '${label} is required!',
@@ -17,7 +17,7 @@ import { CREATE_AVARIA } from '../../api';
 const Criar = () => {
   const navigate = useNavigate();
   const onFinish = async (values) => {
-    console.log(values.avaria)
+    console.log(values.comentario)
     //const { url, options } = CREATE_AVARIA(values.avaria);
     //await fetch(url, options);
     //navigate('/avarias');
@@ -25,13 +25,13 @@ const Criar = () => {
 
   return (
     <div>
-      <Link to="/avarias">
+      <Link to="/comentarios">
         <Button
           style={{ marginBottom: '20px' }}
           type="primary"
           htmlType="submit"
         >
-          Lista de Avarias
+          Lista de Comentários
         </Button>
       </Link>
 
@@ -43,15 +43,7 @@ const Criar = () => {
         // validateMessages={validateMessages}
       >
         <Form.Item
-          name={['avaria', 'nome']}
-          label="Nome"
-          rules={[{ required: true }]}
-        >
-          <Input />
-        </Form.Item>
-
-        <Form.Item
-          name={['avaria', 'id_utilizador']}
+          name={['comentario', 'id_utilizador']}
           label="Técnico"
           rules={[{ required: true }]}
         >
@@ -59,7 +51,7 @@ const Criar = () => {
         </Form.Item>
 
         <Form.Item
-          name={['avaria', 'id_antena']}
+          name={['comentario', 'id_antena']}
           label="Antena"
           rules={[{ required: true }]}
         >
@@ -67,24 +59,16 @@ const Criar = () => {
         </Form.Item>
 
         <Form.Item
-          name={['avaria', 'status']}
-          label="Estado"
+          name={['comentario', 'conteudo']}
+          label="Antena"
           rules={[{ required: true }]}
         >
           <Input />
         </Form.Item>
 
         <Form.Item
-          name={['avaria', 'data_abertura']}
-          label="Data Abertura"
-          rules={[{ required: true }]}
-        >
-          <DatePicker />
-        </Form.Item>    
-
-        <Form.Item
-          name={['avaria', 'detalhe']}
-          label="Detalhes"
+          name={['comentario', 'data_criacao']}
+          label="Data Criação"
           rules={[{ required: true }]}
         >
           <Input />
