@@ -18,20 +18,15 @@ import { UPDATE_ANTENA, GET_ANTENA_BY_ID } from '../../api';
 
 const Editar = () => {
   const { id } = useParams();
-  const [form] = Form.useForm();
   const navigate = useNavigate();
 
+  const [data, setData] = React.useState(null);
+
   const onFinish = async (values) => {
-    const { url, options } = UPDATE_ANTENA(values.antena);
+    const { url, options } = UPDATE_ANTENA(values.antena, id);
     await fetch(url, options);
     navigate('/antenas');
   };
-
-  form.setFieldsValue({
-    nome: 'Hello world!',
-    latitude: 4,
-    longitude: 8,
-  });
 
   React.useEffect(() => {
     (async () => {
@@ -39,15 +34,9 @@ const Editar = () => {
       const response = await fetch(url, options);
       const json = await response.json();
       // if (!response.ok && json?.antenas?.length === 0) return null;
-      console.log(json);
-
-      //   form.setFieldsValue({
-      //     nome: 'Hello world!',
-      //     latitude: 4,
-      //     longitude: 8,
-      //   });
+      setData(json);
     })();
-  }, [id, form]);
+  }, [id]);
   return (
     <div>
       <Link to={`/antenas`}>
@@ -64,7 +53,6 @@ const Editar = () => {
         layout="vertical"
         name="nest-messages"
         onFinish={onFinish}
-        form={form}
 
         // validateMessages={validateMessages}
       >
@@ -73,15 +61,16 @@ const Editar = () => {
           label="Nome"
           rules={[{ required: true }]}
         >
-          <Input />
+          <Input placeholder={data?.nome} />
         </Form.Item>
+        {/* <div>Valor atual: {data?.nome}</div> */}
 
         <Form.Item
           name={['antena', 'latitude']}
           label="Latitude"
           rules={[{ required: true }, { type: 'number', min: -90, max: 90 }]}
         >
-          <InputNumber />
+          <InputNumber placeholder={data?.latitude} />
         </Form.Item>
 
         <Form.Item
@@ -89,7 +78,7 @@ const Editar = () => {
           label="Longitude"
           rules={[{ required: true }, { type: 'number', min: -90, max: 90 }]}
         >
-          <InputNumber />
+          <InputNumber placeholder={data?.longitude} />
         </Form.Item>
 
         <Form.Item>
