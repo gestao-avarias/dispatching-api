@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input, InputNumber, Button, DatePicker } from 'antd';
+import { Form, Input, InputNumber, Select, Button, DatePicker } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 import { CREATE_AVARIA } from '../../api';
 
@@ -21,6 +21,7 @@ const Criar = () => {
     //const { url, options } = CREATE_AVARIA(values.avaria);
     //await fetch(url, options);
     //navigate('/avarias');
+    const { Option } = Select;
   };
 
   return (
@@ -55,7 +56,9 @@ const Criar = () => {
           label="Técnico"
           rules={[{ required: true }]}
         >
-          <Input />
+          <Select placeholder="Selecionar Técnico">
+            <Option value="Zhejiang">Tiago</Option>
+          </Select>
         </Form.Item>
 
         <Form.Item
@@ -63,7 +66,9 @@ const Criar = () => {
           label="Antena"
           rules={[{ required: true }]}
         >
-          <Input />
+          <Select placeholder="Selecionar Técnico">
+            <Option value="Zhejiang">Tiago</Option>
+          </Select>
         </Form.Item>
 
         <Form.Item

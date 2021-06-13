@@ -4,7 +4,6 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HomePage from './Pages/HomePage';
 import AntenasPage from './Pages/AntenasPage';
 import AvariasPage from './Pages/AvariasPage';
-import ComentariosPage from './Pages/ComentariosPage';
 
 import { Layout } from 'antd';
 import CustomGrid from './Components/CustomGrid';
@@ -23,7 +22,6 @@ function App() {
             <Route exact path="/" element={<HomePage />} />
             <Route path="antenas/*" element={<AntenasPage />} />
             <Route path="avarias/*" element={<AvariasPage />} />
-            <Route path="comentarios/*" element={<ComentariosPage />} />
           </Routes>
         </CustomGrid>
       </BrowserRouter>

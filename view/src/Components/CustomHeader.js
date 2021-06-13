@@ -24,9 +24,6 @@ const CustomHeader = () => {
           <Menu.Item key="avarias">
             <NavLink to="/avarias">Avarias</NavLink>
           </Menu.Item>
-          <Menu.Item key="comentarios">
-            <NavLink to="/comentarios">Comentários</NavLink>
-          </Menu.Item>
         </Menu>
       </CustomGrid>
     </Header>
