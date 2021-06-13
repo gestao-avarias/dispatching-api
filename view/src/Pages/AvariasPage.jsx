@@ -1,8 +1,20 @@
 import React from 'react';
-import CustomGrid from '../Components/CustomGrid';
+import { Route, Routes } from 'react-router-dom';
+
+import CriarAvaria from './Avarias/Criar';
+import ListaAvaria from './Avarias/Lista';
+import VerDetalheAvaria from './Avarias/VerDetalhe';
+import EditarAvaria from './Avarias/Editar';
 
 const AvariasPage = () => {
-  return <CustomGrid>AvariasPage</CustomGrid>;
+  return (
+    <Routes>
+      <Route path="/" element={<ListaAvaria />} />
+      <Route path="/:id" element={<VerDetalheAvaria />} />
+      <Route path="/:id/editar" element={<EditarAvaria />} />
+      <Route path="/criar" element={<CriarAvaria />} />
+    </Routes>
+  );
 };
 
 export default AvariasPage;

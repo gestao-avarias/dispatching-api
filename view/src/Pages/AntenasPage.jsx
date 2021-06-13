@@ -1,18 +1,18 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import Criar from './Antenas/Criar';
-import Lista from './Antenas/Lista';
-import VerDetalhe from './Antenas/VerDetalhe';
-import Editar from './Antenas/Editar';
+import CriarAntena from './Antenas/Criar';
+import ListaAntena from './Antenas/Lista';
+import VerDetalheAntena from './Antenas/VerDetalhe';
+import EditarAntena from './Antenas/Editar';
 
 const AntenasPage = () => {
   return (
     <Routes>
-      <Route path="/" element={<Lista />} />
-      <Route path="/:id" element={<VerDetalhe />} />
-      <Route path="/:id/editar" element={<Editar />} />
-      <Route path="/criar" element={<Criar />} />
+      <Route path="/" element={<ListaAntena />} />
+      <Route path="/:id" element={<VerDetalheAntena />} />
+      <Route path="/:id/editar" element={<EditarAntena />} />
+      <Route path="/criar" element={<CriarAntena />} />
     </Routes>
   );
 };
