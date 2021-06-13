@@ -3,7 +3,7 @@ import { Table, Tag, Space } from 'antd';
 
 const columns = [
   {
-    title: 'Name',
+    title: 'Nome',
     dataIndex: 'name',
     key: 'name',
     render: (text) => <a>{text}</a>,
