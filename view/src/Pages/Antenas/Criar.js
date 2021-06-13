@@ -2,7 +2,6 @@ import React from 'react';
 import { Form, Input, InputNumber, Button } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 import { CREATE_ANTENA } from '../../api';
-const navigate = useNavigate();
 
 // const validateMessages = {
 //   required: '${label} is required!',
@@ -16,6 +15,7 @@ const navigate = useNavigate();
 // };
 
 const Criar = () => {
+  const navigate = useNavigate();
   const onFinish = async (values) => {
     const { url, options } = CREATE_ANTENA(values.antena);
     await fetch(url, options);
