@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { Form, Input, InputNumber, Button, DatePicker } from 'antd';
+import { Form, Input, Select, InputNumber, Button, DatePicker } from 'antd';
 import { GET_AVARIA_BY_ID, UPDATE_AVARIA } from '../../api';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-
+const { Option } = Select;
 // const validateMessages = {
 //   required: '${label} is required!',
 //   types: {
@@ -79,7 +79,9 @@ const Editar = () => {
           label="Técnico"
           rules={[{ required: true }]}
         >
-          <Input />
+          <Select placeholder="Selecionar Técnico">
+            <Option value="Zhejiang">Tiago</Option>
+          </Select>
         </Form.Item>
 
         <Form.Item
@@ -87,7 +89,9 @@ const Editar = () => {
           label="Antena"
           rules={[{ required: true }]}
         >
-          <Input />
+          <Select placeholder="Selecionar Avaria">
+            <Option value="Zhejiang">Maia</Option>
+          </Select>
         </Form.Item>
 
         <Form.Item

@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Input, InputNumber, Select, Button, DatePicker } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 import { CREATE_AVARIA } from '../../api';
-
+const { Option } = Select;
 // const validateMessages = {
 //   required: '${label} is required!',
 //   types: {
@@ -66,8 +66,8 @@ const Criar = () => {
           label="Antena"
           rules={[{ required: true }]}
         >
-          <Select placeholder="Selecionar Técnico">
-            <Option value="Zhejiang">Tiago</Option>
+          <Select placeholder="Selecionar Antena">
+            <Option value="Zhejiang">maia</Option>
           </Select>
         </Form.Item>
 
