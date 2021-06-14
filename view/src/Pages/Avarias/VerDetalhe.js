@@ -20,6 +20,7 @@ const VerDetalhe = () => {
       console.log(data);
     })();
   }, []);
+
   return (
     <div>
       <Link to={`/avarias`}>
@@ -32,19 +33,24 @@ const VerDetalhe = () => {
         </Button>
       </Link>
       <Descriptions title={data?.nome}>
-        <Descriptions.Item label="Técnico"> {data?.id_utilizador}</Descriptions.Item>
-         
+        <Descriptions.Item label="Técnico">
+          {data?.id_utilizador}
+        </Descriptions.Item>
+
         <Descriptions.Item label="Antena">{data?.id_antena}</Descriptions.Item>
 
         <Descriptions.Item label="Estado">{data?.status}</Descriptions.Item>
 
-        <Descriptions.Item label="Data Abertura">{data?.data_abertura}</Descriptions.Item>
+        <Descriptions.Item label="Data Abertura">
+          {data?.data_abertura}
+        </Descriptions.Item>
 
-        <Descriptions.Item label="Data Conclusao">{data?.data_conclusao}</Descriptions.Item>
+        <Descriptions.Item label="Data Conclusao">
+          {data?.data_conclusao}
+        </Descriptions.Item>
 
         <Descriptions.Item label="Detalhes">{data?.detalhe}</Descriptions.Item>
       </Descriptions>
-      ,
     </div>
   );
 };

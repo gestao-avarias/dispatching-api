@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { Form, Input, Select, InputNumber, Button, DatePicker } from 'antd';
 import { GET_AVARIA_BY_ID, UPDATE_AVARIA } from '../../api';
 import { Link, useParams, useNavigate } from 'react-router-dom';

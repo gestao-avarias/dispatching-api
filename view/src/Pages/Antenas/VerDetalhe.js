@@ -1,17 +1,20 @@
 import React from 'react';
-
-import { Button, Descriptions, Table, Space } from 'antd';
-import { Link, useParams } from 'react-router-dom';
+import { Button, Form, Input, Select, Descriptions, Table, Space } from 'antd';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import {
   GET_ANTENA_BY_ID,
   DELETE_COMENTARIO,
   GET_ALL_COMENTARIO,
+  GET_ALL_UTILIZADOR,
+  CREATE_COMENTARIO,
 } from '../../api';
+
+const { Option } = Select;
 
 const VerDetalhe = () => {
   const [data, setData] = React.useState(null);
   const [dataComentario, setDataComentario] = React.useState(null);
-
+  const [dataUtilizador, setDataUtilizador] = React.useState([]);
   const { id } = useParams();
 
   const columns = [
@@ -54,9 +57,11 @@ const VerDetalhe = () => {
       },
     },
   ];
+
   React.useEffect(() => {
     (async () => {
       const { url, options } = GET_ANTENA_BY_ID(id);
+
       const response = await fetch(url, options);
       const json = await response.json();
       // if (!response.ok && json?.antenas?.length === 0) return null;
@@ -89,10 +94,29 @@ const VerDetalhe = () => {
       const response = await fetch(url, options);
       const json = await response.json();
       // if (!response.ok && json?.antenas?.length === 0) return null;
-      console.log(json);
+      // console.log(json);
       setDataComentario(json);
     })();
   }, []);
+
+  React.useEffect(() => {
+    (async () => {
+      const { url, options } = GET_ALL_UTILIZADOR();
+      const response = await fetch(url, options);
+      const json = await response.json();
+      // if (!response.ok && json?.antenas?.length === 0) return null;
+
+      setDataUtilizador(json.sort(compare));
+    })();
+  }, []);
+
+  const navigate = useNavigate();
+  const onFinish = async (values) => {
+    const { url, options } = CREATE_COMENTARIO(values.comentario);
+    await fetch(url, options);
+    navigate('/comentarios');
+  };
+
   return (
     <div>
       <Link to={`/antenas`}>
@@ -104,16 +128,39 @@ const VerDetalhe = () => {
           Lista de Antenas
         </Button>
       </Link>
-      <Descriptions title={data?.nome}>
-        <Descriptions.Item label="Longitude">
-          {data?.longitude}
-        </Descriptions.Item>
-        <Descriptions.Item label="Latitude">{data?.latitude}</Descriptions.Item>
-      </Descriptions>
+      <Form>
+        <Descriptions title={data?.nome}>
+          <Descriptions.Item label="Longitude">
+            {data?.longitude}
+          </Descriptions.Item>
+          <Descriptions.Item label="Latitude">
+            {data?.latitude}
+          </Descriptions.Item>
+        </Descriptions>
 
-      <h3 style={{ marginTop: '20px' }}>Comentários</h3>
+        <h3 style={{ marginTop: '20px' }}>Comentários:</h3>
+        <Form.Item name={['Técnico']} rules={[{ required: true }]}>
+          <Select placeholder="Selecionar Técnico">
+            {dataUtilizador.map((item) => (
+              <Option key={item.id} value={item.id}>
+                {item.nome}
+              </Option>
+            ))}
+          </Select>
+        </Form.Item>
 
-      <Table columns={columns} dataSource={dataComentario} rowKey="id" />
+        <Form.Item name={['Detalhes']} rules={[{ required: true }]}>
+          <Input.TextArea />
+        </Form.Item>
+
+        <Form.Item>
+          <Button type="primary" htmlType="submit">
+            Criar Comentário
+          </Button>
+        </Form.Item>
+
+        <Table columns={columns} dataSource={dataComentario} rowKey="id" />
+      </Form>
     </div>
   );
 };
