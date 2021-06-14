@@ -22,12 +22,8 @@ const Criar = () => {
 
   const onFinish = async (values) => {
     console.log(values.avaria);
-
-    const { data_abertura } = values.avaria;
-
-    console.log(data_abertura.format('X'));
-    //const { url, options } = CREATE_AVARIA(values.avaria);
-    //await fetch(url, options);
+    const { url, options } = CREATE_AVARIA(values.avaria);
+    await fetch(url, options);
     //navigate('/avarias');
   };
 

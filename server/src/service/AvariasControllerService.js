@@ -8,6 +8,8 @@ var sql = require('../utils/db.js');
  * returns Avaria
  **/
 exports.createAvaria = function (body) {
+  console.log(body);
+
   return new Promise(function (resolve, reject) {
     sql.query(
       'INSERT INTO avaria (nome, id_utilizador, id_antena, status, data_abertura, detalhe) Values(?, ?, ?, ?, UNIX_TIMESTAMP(CURRENT_TIMESTAMP()), ?)',
