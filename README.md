@@ -15,8 +15,36 @@ Neste trabalho está a ser desenvolvido uma API que serve para gerir avarias em 
 
 ## Galeria
 
-_Please provide a galery of the final result, with small images_
-A [table](https://www.markdownguide.org/extended-syntax/#tables) may be usefull to organize the images.
+##### Home
+
+|                                             |
+| :-----------------------------------------: |
+| ![HomePage](doc/images/Depois/HomePage.JPG) |
+|               Página Inicial                |
+
+##### Antena
+
+|                                                 |                                                           |
+| :---------------------------------------------: | :-------------------------------------------------------: |
+| ![AntenaPage](doc/images/Depois/AntenaPage.PNG) | ![CriarAntenaPage](doc/images/Depois/CriarAntenaPage.PNG) |
+|                  Página Antena                  |                    Página Criar Antena                    |
+
+|                                                     |                                                             |
+| :-------------------------------------------------: | :---------------------------------------------------------: |
+| ![AntenaPage](doc/images/Depois/AntenaEditPage.JPG) | ![CriarAntenaPage](doc/images/Depois/AntenaDetalhePage.JPG) |
+|                Página Editar Antena                 |                   Página Detalhes Antena                    |
+
+##### Avaria
+
+|                                                 |                                                           |
+| :---------------------------------------------: | :-------------------------------------------------------: |
+| ![AvariaPage](doc/images/Depois/AvariaPage.PNG) | ![CriarAvariaPage](doc/images/Depois/CriarAvariaPage.PNG) |
+|                  Página Avaria                  |                    Página Criar Avaria                    |
+
+|                                                     |                                                             |
+| :-------------------------------------------------: | :---------------------------------------------------------: |
+| ![AntenaPage](doc/images/Depois/AvariaEditPage.JPG) | ![CriarAntenaPage](doc/images/Depois/AvariaDetalhePage.JPG) |
+|                Página Editar Avaria                 |                   Página Detalhes Avaria                    |
 
 ## Tecnologias
 
