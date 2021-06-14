@@ -115,25 +115,6 @@ const Criar = () => {
         </Form.Item>
 
         <Form.Item
-          name={['avaria', 'status']}
-          label="Estado"
-          rules={[{ required: true }]}
-        >
-          <Input />
-        </Form.Item>
-
-        <Form.Item
-          name={['avaria', 'data_abertura']}
-          label="Data Abertura"
-          rules={[{ required: true }]}
-        >
-          <DatePicker
-            showTime={{ format: 'HH:mm' }}
-            format="YYYY-MM-DD HH:mm"
-          />
-        </Form.Item>
-
-        <Form.Item
           name={['avaria', 'detalhe']}
           label="Detalhes"
           rules={[{ required: true }]}
