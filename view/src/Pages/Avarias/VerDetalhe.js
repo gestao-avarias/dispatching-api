@@ -34,10 +34,12 @@ const VerDetalhe = () => {
       </Link>
       <Descriptions title={data?.nome}>
         <Descriptions.Item label="Técnico">
-          {data?.id_utilizador}
+          {data?.nome_utilizador}
         </Descriptions.Item>
 
-        <Descriptions.Item label="Antena">{data?.id_antena}</Descriptions.Item>
+        <Descriptions.Item label="Antena">
+          {data?.nome_antena}
+        </Descriptions.Item>
 
         <Descriptions.Item label="Estado">{data?.status}</Descriptions.Item>
 
