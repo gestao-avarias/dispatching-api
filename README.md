@@ -19,31 +19,31 @@ Neste trabalho está a ser desenvolvido uma API que serve para gerir avarias em 
 
 |                                             |
 | :-----------------------------------------: |
-| ![HomePage](doc/images/Depois/HomePage.JPG) |
+| ![HomePage](doc/images/Depois/HomePage.jpg) |
 |               Página Inicial                |
 
 ##### Antena
 
 |                                                 |                                                           |
 | :---------------------------------------------: | :-------------------------------------------------------: |
-| ![AntenaPage](doc/images/Depois/AntenaPage.JPG) | ![CriarAntenaPage](doc/images/Depois/CriarAntenaPage.JPG) |
+| ![AntenaPage](doc/images/Depois/AntenaPage.jpg) | ![CriarAntenaPage](doc/images/Depois/CriarAntenaPage.jpg) |
 |                  Página Antena                  |                    Página Criar Antena                    |
 
 |                                                             |                                                                  |
 | :---------------------------------------------------------: | :--------------------------------------------------------------: |
-| ![PáginaEditarAntena](doc/images/Depois/AntenaEditPage.JPG) | ![PáginaDetalhesAntena](doc/images/Depois/AntenaDetalhePage.JPG) |
+| ![PáginaEditarAntena](doc/images/Depois/AntenaEditPage.jpg) | ![PáginaDetalhesAntena](doc/images/Depois/AntenaDetalhePage.jpg) |
 |                    Página Editar Antena                     |                      Página Detalhes Antena                      |
 
 ##### Avaria
 
 |                                                 |                                                           |
 | :---------------------------------------------: | :-------------------------------------------------------: |
-| ![AvariaPage](doc/images/Depois/AvariaPage.JPG) | ![CriarAvariaPage](doc/images/Depois/CriarAvariaPage.JPG) |
+| ![AvariaPage](doc/images/Depois/AvariaPage.jpg) | ![CriarAvariaPage](doc/images/Depois/CriarAvariaPage.jpg) |
 |                  Página Avaria                  |                    Página Criar Avaria                    |
 
 |                                                             |                                                                  |
 | :---------------------------------------------------------: | :--------------------------------------------------------------: |
-| ![PáginaEditarAvaria](doc/images/Depois/AvariaEditPage.JPG) | ![PáginaDetalhesAvaria](doc/images/Depois/AvariaDetalhePage.JPG) |
+| ![PáginaEditarAvaria](doc/images/Depois/AvariaEditPage.jpg) | ![PáginaDetalhesAvaria](doc/images/Depois/AvariaDetalhePage.jpg) |
 |                    Página Editar Avaria                     |                      Página Detalhes Avaria                      |
 
 ## Tecnologias
