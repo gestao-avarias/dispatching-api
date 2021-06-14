@@ -37,6 +37,7 @@ const Editar = () => {
       setData(json);
     })();
   }, [id]);
+
   return (
     <div>
       <Link to={`/antenas`}>

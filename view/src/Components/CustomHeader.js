@@ -18,6 +18,9 @@ const CustomHeader = () => {
       <CustomGrid styleProps={{ padding: 0 }}>
         <div className="logo" />
         <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['']}>
+          <Menu.Item key="homePage">
+            <NavLink to="/">HomePage</NavLink>
+          </Menu.Item>
           <Menu.Item key="antenas">
             <NavLink to="/antenas">Antenas</NavLink>
           </Menu.Item>

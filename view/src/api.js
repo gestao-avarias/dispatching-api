@@ -90,9 +90,9 @@ export function CREATE_AVARIA(body) {
   };
 }
 
-export function UPDATE_AVARIA(body) {
+export function UPDATE_AVARIA(body, id, id_utilizador, id_antena) {
   return {
-    url: API_URL + '/avarias',
+    url: API_URL + '/avarias/' + id + id_utilizador + id_antena,
     options: {
       method: 'PUT',
       headers: {
