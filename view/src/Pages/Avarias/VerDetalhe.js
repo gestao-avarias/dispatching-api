@@ -3,6 +3,7 @@ import React from 'react';
 import { Button, Descriptions } from 'antd';
 import { Link, useParams } from 'react-router-dom';
 import { GET_AVARIA_BY_ID } from '../../api';
+import { MinusCircleFilled, CheckCircleFilled } from '@ant-design/icons';
 
 const VerDetalhe = () => {
   const [data, setData] = React.useState(null);
@@ -40,7 +41,13 @@ const VerDetalhe = () => {
           {data?.nome_antena}
         </Descriptions.Item>
 
-        <Descriptions.Item label="Estado">{data?.status}</Descriptions.Item>
+        <Descriptions.Item label="Estado">
+          {data?.status ? (
+            <CheckCircleFilled style={{ color: '#55C937' }} />
+          ) : (
+            <MinusCircleFilled style={{ color: '#F70C37' }} />
+          )}
+        </Descriptions.Item>
 
         <Descriptions.Item label="Data Abertura">
           {data?.data_abertura
