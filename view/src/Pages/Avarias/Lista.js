@@ -2,6 +2,7 @@ import React from 'react';
 import { Table, Button, Space } from 'antd';
 import { Link } from 'react-router-dom';
 import { GET_ALL_AVARIA, DELETE_AVARIA } from '../../api';
+import { MinusCircleFilled, CheckCircleFilled } from '@ant-design/icons';
 
 const Lista = () => {
   const [data, setData] = React.useState(null);
@@ -26,6 +27,12 @@ const Lista = () => {
       title: 'Estado',
       dataIndex: 'status',
       key: 'status',
+      render: (item) =>
+        item ? (
+          <CheckCircleFilled style={{ color: '#55C937' }} />
+        ) : (
+          <MinusCircleFilled style={{ color: '#F70C37' }} />
+        ),
     },
     {
       title: 'Data Abertura',

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Form, Input, Select, Descriptions, Table, Space } from 'antd';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import {
   GET_ANTENA_BY_ID,
   DELETE_COMENTARIO,
@@ -16,6 +16,8 @@ const VerDetalhe = () => {
   const [dataComentario, setDataComentario] = React.useState([]);
   const [dataUtilizador, setDataUtilizador] = React.useState([]);
   const { id } = useParams();
+
+  const [form] = Form.useForm();
 
   const columns = [
     {
@@ -68,7 +70,7 @@ const VerDetalhe = () => {
 
       setData(json);
     })();
-  }, []);
+  }, [id]);
 
   function compare(a, b) {
     if (a.nome < b.nome) {
@@ -97,7 +99,7 @@ const VerDetalhe = () => {
       // console.log(json);
       setDataComentario(json);
     })();
-  }, []);
+  }, [id]);
 
   React.useEffect(() => {
     (async () => {
@@ -110,19 +112,27 @@ const VerDetalhe = () => {
     })();
   }, []);
 
-  const navigate = useNavigate();
   const onFinish = async (values) => {
     const comentario = {
       ...values.comentario,
       id_antena: +id,
     };
+    form.resetFields();
 
     const { url, options } = CREATE_COMENTARIO(comentario);
-    const res = await fetch(url, options);
+    await fetch(url, options);
+
+    (async () => {
+      const { url, options } = GET_ALL_COMENTARIO(id);
+      const response = await fetch(url, options);
+      const json = await response.json();
+      // if (!response.ok && json?.antenas?.length === 0) return null;
+      // console.log(json);
+      setDataComentario(json);
+    })();
 
     // if (!response.ok && json?.antenas?.length === 0) return null;
     // console.log(json);
-    setDataComentario([...dataComentario, comentario]);
   };
 
   return (
@@ -145,7 +155,12 @@ const VerDetalhe = () => {
       </Descriptions>
 
       <h3 style={{ marginTop: '20px' }}>Comentários:</h3>
-      <Form layout="vertical" name="nest-messages" onFinish={onFinish}>
+      <Form
+        form={form}
+        layout="vertical"
+        name="nest-messages"
+        onFinish={onFinish}
+      >
         <Form.Item
           name={['comentario', 'id_utilizador']}
           label="Técnico"

@@ -16,10 +16,8 @@ const VerDetalhe = () => {
       // if (!response.ok && json?.antenas?.length === 0) return null;
 
       setData(json);
-
-      console.log(data);
     })();
-  }, []);
+  }, [id]);
 
   return (
     <div>

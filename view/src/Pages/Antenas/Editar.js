@@ -19,8 +19,7 @@ import { UPDATE_ANTENA, GET_ANTENA_BY_ID } from '../../api';
 const Editar = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-
-  const [data, setData] = React.useState(null);
+  const [form] = Form.useForm();
 
   const onFinish = async (values) => {
     const { url, options } = UPDATE_ANTENA(values.antena, id);
@@ -34,9 +33,16 @@ const Editar = () => {
       const response = await fetch(url, options);
       const json = await response.json();
       // if (!response.ok && json?.antenas?.length === 0) return null;
-      setData(json);
+
+      form.setFieldsValue({
+        antena: {
+          nome: json?.nome,
+          longitude: json?.longitude,
+          latitude: json?.latitude,
+        },
+      });
     })();
-  }, [id]);
+  }, [id, form]);
 
   return (
     <div>
@@ -53,6 +59,7 @@ const Editar = () => {
       <h2>Editar Antena</h2>
 
       <Form
+        form={form}
         layout="vertical"
         name="nest-messages"
         onFinish={onFinish}
@@ -64,7 +71,7 @@ const Editar = () => {
           label="Nome"
           rules={[{ required: true }]}
         >
-          <Input placeholder={data?.nome} />
+          <Input />
         </Form.Item>
         {/* <div>Valor atual: {data?.nome}</div> */}
 
@@ -73,7 +80,7 @@ const Editar = () => {
           label="Latitude"
           rules={[{ required: true }, { type: 'number', min: -90, max: 90 }]}
         >
-          <InputNumber placeholder={data?.latitude} />
+          <InputNumber />
         </Form.Item>
 
         <Form.Item
@@ -81,7 +88,7 @@ const Editar = () => {
           label="Longitude"
           rules={[{ required: true }, { type: 'number', min: -90, max: 90 }]}
         >
-          <InputNumber placeholder={data?.longitude} />
+          <InputNumber />
         </Form.Item>
 
         <Form.Item>

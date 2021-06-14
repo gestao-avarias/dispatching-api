@@ -88,7 +88,7 @@ const Editar = () => {
         },
       });
     })();
-  }, [id]);
+  }, [id, form]);
 
   return (
     <div>
@@ -148,16 +148,13 @@ const Editar = () => {
           </Select>
         </Form.Item>
 
-        <Form.Item label="Estado">
-          <Switch />
-        </Form.Item>
-
         <Form.Item
           name={['avaria', 'status']}
           label="Estado"
           rules={[{ required: true }]}
+          valuePropName="checked"
         >
-          <Input />
+          <Switch />
         </Form.Item>
 
         <Form.Item name={['avaria', 'data_abertura']} label="Data Abertura">
