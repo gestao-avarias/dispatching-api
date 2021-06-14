@@ -1,20 +1,10 @@
 import React from 'react';
-import { Form, Input, Select, Button, DatePicker } from 'antd';
+import { Form, Input, Select, Button, DatePicker, Switch } from 'antd';
 import { GET_AVARIA_BY_ID, UPDATE_AVARIA } from '../../api';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { GET_ALL_ANTENA, GET_ALL_UTILIZADOR } from '../../api';
 import moment from 'moment';
 const { Option } = Select;
-// const validateMessages = {
-//   required: '${label} is required!',
-//   types: {
-//     email: '${label} is not a valid email!',
-//     number: '${label} is not a valid number!',
-//   },
-//   number: {
-//     range: '${label} must be between ${min} and ${max}',
-//   },
-// };
 
 const Editar = () => {
   const { id } = useParams();
@@ -156,6 +146,10 @@ const Editar = () => {
               </Option>
             ))}
           </Select>
+        </Form.Item>
+
+        <Form.Item label="Estado">
+          <Switch />
         </Form.Item>
 
         <Form.Item
