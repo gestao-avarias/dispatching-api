@@ -30,6 +30,14 @@ const VerDetalhe = () => {
       title: 'Data Criação',
       dataIndex: 'data_criacao',
       key: 'data_criacao',
+      render: (item) => {
+        if (item) {
+          return new Date(item * 1000)
+            .toISOString()
+            .slice(0, 16)
+            .replace('T', ' ');
+        }
+      },
     },
 
     {

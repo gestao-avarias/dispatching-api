@@ -131,7 +131,10 @@ const Criar = () => {
           label="Data Abertura"
           rules={[{ required: true }]}
         >
-          <DatePicker />
+          <DatePicker
+            showTime={{ format: 'HH:mm' }}
+            format="YYYY-MM-DD HH:mm"
+          />
         </Form.Item>
 
         <Form.Item
