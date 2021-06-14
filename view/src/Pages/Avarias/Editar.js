@@ -3,6 +3,7 @@ import React from 'react';
 import { Form, Input, Select, InputNumber, Button, DatePicker } from 'antd';
 import { GET_AVARIA_BY_ID, UPDATE_AVARIA } from '../../api';
 import { Link, useParams, useNavigate } from 'react-router-dom';
+import { CREATE_AVARIA, GET_ALL_ANTENA, GET_ALL_UTILIZADOR } from '../../api';
 const { Option } = Select;
 // const validateMessages = {
 //   required: '${label} is required!',
@@ -19,34 +20,45 @@ const Editar = () => {
   const { id } = useParams();
   const [form] = Form.useForm();
   const navigate = useNavigate();
-
+  const [dataAntena, setDataAntena] = React.useState([]);
+  const [dataUtilizador, setDataUtilizador] = React.useState([]);
   const onFinish = async (values) => {
     const { url, options } = UPDATE_AVARIA(values.avaria);
     await fetch(url, options);
     navigate('/avarias');
   };
 
-  form.setFieldsValue({
-    nome: 'Hello world!',
-    latitude: 4,
-    longitude: 8,
-  });
+  function compare(a, b) {
+    if (a.nome < b.nome) {
+      return -1;
+    }
+    if (a.nome > b.nome) {
+      return 1;
+    }
+    return 0;
+  }
 
   React.useEffect(() => {
     (async () => {
-      const { url, options } = GET_AVARIA_BY_ID(id);
+      const { url, options } = GET_ALL_ANTENA();
       const response = await fetch(url, options);
       const json = await response.json();
       // if (!response.ok && json?.antenas?.length === 0) return null;
-      console.log(json);
 
-      //   form.setFieldsValue({
-      //     nome: 'Hello world!',
-      //     latitude: 4,
-      //     longitude: 8,
-      //   });
+      setDataAntena(json.sort(compare));
     })();
-  }, [id, form]);
+  }, []);
+
+  React.useEffect(() => {
+    (async () => {
+      const { url, options } = GET_ALL_UTILIZADOR();
+      const response = await fetch(url, options);
+      const json = await response.json();
+      // if (!response.ok && json?.antenas?.length === 0) return null;
+
+      setDataUtilizador(json.sort(compare));
+    })();
+  }, []);
   return (
     <div>
       <Link to="/avarias">
@@ -80,7 +92,11 @@ const Editar = () => {
           rules={[{ required: true }]}
         >
           <Select placeholder="Selecionar Técnico">
-            <Option value="Zhejiang">Tiago</Option>
+            {dataUtilizador.map((item) => (
+              <Option key={item.id} value={item.id}>
+                {item.nome}
+              </Option>
+            ))}
           </Select>
         </Form.Item>
 
@@ -89,8 +105,12 @@ const Editar = () => {
           label="Antena"
           rules={[{ required: true }]}
         >
-          <Select placeholder="Selecionar Avaria">
-            <Option value="Zhejiang">Maia</Option>
+          <Select placeholder="Selecionar Antena">
+            {dataAntena.map((item) => (
+              <Option key={item.id} value={item.id}>
+                {item.nome}
+              </Option>
+            ))}
           </Select>
         </Form.Item>
 
