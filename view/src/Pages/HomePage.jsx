@@ -7,7 +7,7 @@ import 'leaflet/dist/leaflet.css';
 const HomePage = () => {
   return (
     <div>
-      <Image src={logo} rounded />
+      <Image preview={false} src={logo} />
     </div>
   );
 };

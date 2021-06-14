@@ -43,11 +43,21 @@ const VerDetalhe = () => {
         <Descriptions.Item label="Estado">{data?.status}</Descriptions.Item>
 
         <Descriptions.Item label="Data Abertura">
-          {data?.data_abertura}
+          {data?.data_abertura
+            ? new Date(data?.data_abertura * 1000)
+                .toISOString()
+                .slice(0, 16)
+                .replace('T', ' ')
+            : 'Não Definida'}
         </Descriptions.Item>
 
         <Descriptions.Item label="Data Conclusao">
-          {data?.data_conclusao}
+          {data?.data_conclusao
+            ? new Date(data?.data_conclusao * 1000)
+                .toISOString()
+                .slice(0, 16)
+                .replace('T', ' ')
+            : 'Não Definida'}
         </Descriptions.Item>
 
         <Descriptions.Item label="Detalhes">{data?.detalhe}</Descriptions.Item>

@@ -56,15 +56,19 @@ exports.deleteAvaria = function (id) {
  **/
 exports.retrieveAvaria = function (id) {
   return new Promise(function (resolve, reject) {
-    sql.query('SELECT * FROM avaria WHERE id = ?', [id], function (err, res) {
-      if (err) {
-        console.log(err);
-        reject(err);
-      } else {
-        console.log(res);
-        resolve(res[0]);
-      }
-    });
+    sql.query(
+      'SELECT avaria.*, utilizador.nome as nome_utilizador, antena.nome as nome_antena FROM avaria join utilizador on id_utilizador = utilizador.id join antena on id_antena = antena.id WHERE avaria.id = ?',
+      [id],
+      function (err, res) {
+        if (err) {
+          console.log(err);
+          reject(err);
+        } else {
+          console.log(res);
+          resolve(res[0]);
+        }
+      },
+    );
   });
 };
 
@@ -86,7 +90,7 @@ exports.retrieveAvarias = function () {
     };
 
     let queryString =
-      'SELECT avaria.*, utilizador.nome as nome_utilizador, antena.nome as nome_antena   FROM avaria join utilizador on avaria.id_utilizador = utilizador.id join antena on avaria.id_antena =  antena.id ';
+      'SELECT avaria.*, utilizador.nome as nome_utilizador, antena.nome as nome_antena FROM avaria join utilizador on avaria.id_utilizador = utilizador.id join antena on avaria.id_antena =  antena.id ';
 
     sql.query(queryString, callback);
   });
