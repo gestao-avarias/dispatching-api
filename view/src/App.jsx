@@ -8,8 +8,6 @@ import AvariasPage from './Pages/AvariasPage';
 import { Layout } from 'antd';
 import CustomGrid from './Components/CustomGrid';
 
-// const { Content } = Layout;
-
 function App() {
   return (
     <div>
