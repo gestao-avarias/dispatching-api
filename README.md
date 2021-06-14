@@ -64,13 +64,36 @@ Neste trabalho está a ser desenvolvido uma API que serve para gerir avarias em 
 
 ### Apresentação do projeto
 
+#### Descrição
+
+Neste trabalho está a ser desenvolvido uma API que serve para gerir avarias em antenas de telecomunicações. Um gestor de avarias pode atribuir tarefas ao técnico para resolver a avaria. Podendo o técnico consultar antenas e deixar comentários sobre as antenas.
+
 - Capítulo 1: [Apresentação do projeto](doc/c1.md)
 
 ### Interface de utilizador
 
+- Página Home
+  - Navbar com HomePage, Antenas e Avarias
+- Página Antenas
+  - Lista por ordem alfabética das antenas criadas.
+  - Um botão de criar antena.
+    - Botão para voltar à lista de antenas.
+    - Três caixas de texto para escrever o nome da antena, a latitute e a longitude.
+    - Botão de criar em baixo para criar a antena.
+- Página Avarias
+
+  - Lista por ordem alfabética das avarias criadas.
+  - Um botão de criar avaria.
+    - Botão para voltar à lista de avarias.
+    - Duas caixas de texto para escrever o identificador e os detalhes.
+    - Duas dropdowns para selecionar o técnino e a antena.
+    - Botão de criar em baixo para criar a avaria.
+
 - Capítulo 2: [Protótipo da interface de utilizador e sitemap](doc/c2.md)
 
 ### Produto
+
+O produto permite o gestor de avarias atribuir tarefas ao técnico, e permite ao técnico consultar as anteas, marcar antenas favoritas e deixar comentários sobre as antenas.
 
 - Capítulo 3: [Produto](doc/c3.md)
 
