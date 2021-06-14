@@ -24,7 +24,7 @@ const Criar = () => {
     console.log(values.avaria);
     const { url, options } = CREATE_AVARIA(values.avaria);
     await fetch(url, options);
-    //navigate('/avarias');
+    navigate('/avarias');
   };
 
   function compare(a, b) {

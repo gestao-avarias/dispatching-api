@@ -13,7 +13,7 @@ const { Option } = Select;
 
 const VerDetalhe = () => {
   const [data, setData] = React.useState(null);
-  const [dataComentario, setDataComentario] = React.useState(null);
+  const [dataComentario, setDataComentario] = React.useState([]);
   const [dataUtilizador, setDataUtilizador] = React.useState([]);
   const { id } = useParams();
 
@@ -112,9 +112,17 @@ const VerDetalhe = () => {
 
   const navigate = useNavigate();
   const onFinish = async (values) => {
-    const { url, options } = CREATE_COMENTARIO(values.comentario);
-    await fetch(url, options);
-    navigate('/comentarios');
+    const comentario = {
+      ...values.comentario,
+      id_antena: +id,
+    };
+
+    const { url, options } = CREATE_COMENTARIO(comentario);
+    const res = await fetch(url, options);
+
+    // if (!response.ok && json?.antenas?.length === 0) return null;
+    // console.log(json);
+    setDataComentario([...dataComentario, comentario]);
   };
 
   return (
@@ -128,18 +136,21 @@ const VerDetalhe = () => {
           Lista de Antenas
         </Button>
       </Link>
-      <Form>
-        <Descriptions title={data?.nome}>
-          <Descriptions.Item label="Longitude">
-            {data?.longitude}
-          </Descriptions.Item>
-          <Descriptions.Item label="Latitude">
-            {data?.latitude}
-          </Descriptions.Item>
-        </Descriptions>
 
-        <h3 style={{ marginTop: '20px' }}>Comentários:</h3>
-        <Form.Item name={['Técnico']} rules={[{ required: true }]}>
+      <Descriptions title={data?.nome}>
+        <Descriptions.Item label="Longitude">
+          {data?.longitude}
+        </Descriptions.Item>
+        <Descriptions.Item label="Latitude">{data?.latitude}</Descriptions.Item>
+      </Descriptions>
+
+      <h3 style={{ marginTop: '20px' }}>Comentários:</h3>
+      <Form layout="vertical" name="nest-messages" onFinish={onFinish}>
+        <Form.Item
+          name={['comentario', 'id_utilizador']}
+          label="Técnico"
+          rules={[{ required: true }]}
+        >
           <Select placeholder="Selecionar Técnico">
             {dataUtilizador.map((item) => (
               <Option key={item.id} value={item.id}>
@@ -149,7 +160,11 @@ const VerDetalhe = () => {
           </Select>
         </Form.Item>
 
-        <Form.Item name={['Detalhes']} rules={[{ required: true }]}>
+        <Form.Item
+          name={['comentario', 'conteudo']}
+          label="Detalhes"
+          rules={[{ required: true }]}
+        >
           <Input.TextArea />
         </Form.Item>
 
