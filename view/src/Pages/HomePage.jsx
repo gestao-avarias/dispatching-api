@@ -3,7 +3,7 @@ import Layout from 'antd/lib/layout/layout';
 import { Image } from 'antd';
 // import { MapContainer, TileLayer } from 'react-leaflet';
 
-import logo from '../images/logo.jpeg';
+import logo from '../images/dispatch.png';
 
 import 'leaflet/dist/leaflet.css';
 const HomePage = () => {
