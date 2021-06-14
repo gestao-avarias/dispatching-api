@@ -32,6 +32,7 @@ const VerDetalhe = () => {
           Lista de Avarias
         </Button>
       </Link>
+      <h2>Detalhes Avaria</h2>
       <Descriptions title={data?.nome}>
         <Descriptions.Item label="Técnico">
           {data?.nome_utilizador}

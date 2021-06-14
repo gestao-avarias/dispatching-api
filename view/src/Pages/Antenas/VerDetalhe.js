@@ -136,7 +136,7 @@ const VerDetalhe = () => {
           Lista de Antenas
         </Button>
       </Link>
-
+      <h2>Detalhes Antena</h2>
       <Descriptions title={data?.nome}>
         <Descriptions.Item label="Longitude">
           {data?.longitude}

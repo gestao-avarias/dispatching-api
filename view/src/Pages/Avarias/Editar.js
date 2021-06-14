@@ -21,6 +21,8 @@ const Editar = () => {
   const navigate = useNavigate();
   const [dataAntena, setDataAntena] = React.useState([]);
   const [dataUtilizador, setDataUtilizador] = React.useState([]);
+  const [data, setData] = React.useState(null);
+
   const onFinish = async (values) => {
     const { url, options } = UPDATE_AVARIA(values.avaria);
     await fetch(url, options);
@@ -42,6 +44,7 @@ const Editar = () => {
       const { url, options } = GET_ALL_ANTENA();
       const response = await fetch(url, options);
       const json = await response.json();
+
       // if (!response.ok && json?.antenas?.length === 0) return null;
 
       setDataAntena(json.sort(compare));
@@ -58,6 +61,17 @@ const Editar = () => {
       setDataUtilizador(json.sort(compare));
     })();
   }, []);
+
+  React.useEffect(() => {
+    (async () => {
+      const { url, options } = GET_AVARIA_BY_ID(id);
+      const response = await fetch(url, options);
+      const json = await response.json();
+      // if (!response.ok && json?.antenas?.length === 0) return null;
+      setData(json);
+    })();
+  }, [id]);
+
   return (
     <div>
       <Link to="/avarias">
@@ -69,6 +83,8 @@ const Editar = () => {
           Lista de Avarias
         </Button>
       </Link>
+
+      <h2>Editar Avaria</h2>
 
       <Form
         // {...layout}
@@ -82,7 +98,7 @@ const Editar = () => {
           label="Identificador"
           rules={[{ required: true }]}
         >
-          <Input />
+          <Input placeholder={data?.nome} />
         </Form.Item>
 
         <Form.Item
@@ -118,14 +134,17 @@ const Editar = () => {
           label="Estado"
           rules={[{ required: true }]}
         >
-          <Input />
+          <Input placeholder={data?.status} />
         </Form.Item>
 
-        <Form.Item
-          name={['avaria', 'data_abertura']}
-          label="Data Abertura"
-          rules={[{ required: true }]}
-        >
+        <Form.Item name={['avaria', 'data_abertura']} label="Data Abertura">
+          <DatePicker
+            showTime={{ format: 'HH:mm' }}
+            format="YYYY-MM-DD HH:mm"
+          />
+        </Form.Item>
+
+        <Form.Item name={['avaria', 'data_conclusao']} label="Data Conclusão">
           <DatePicker
             showTime={{ format: 'HH:mm' }}
             format="YYYY-MM-DD HH:mm"
@@ -137,7 +156,7 @@ const Editar = () => {
           label="Detalhes"
           rules={[{ required: true }]}
         >
-          <Input />
+          <Input placeholder={data?.detalhe} />
         </Form.Item>
 
         <Form.Item>
