@@ -26,25 +26,25 @@ Neste trabalho está a ser desenvolvido uma API que serve para gerir avarias em 
 
 |                                                 |                                                           |
 | :---------------------------------------------: | :-------------------------------------------------------: |
-| ![AntenaPage](doc/images/Depois/AntenaPage.PNG) | ![CriarAntenaPage](doc/images/Depois/CriarAntenaPage.PNG) |
+| ![AntenaPage](doc/images/Depois/AntenaPage.JPG) | ![CriarAntenaPage](doc/images/Depois/CriarAntenaPage.JPG) |
 |                  Página Antena                  |                    Página Criar Antena                    |
 
-|                                                     |                                                             |
-| :-------------------------------------------------: | :---------------------------------------------------------: |
-| ![AntenaPage](doc/images/Depois/AntenaEditPage.JPG) | ![CriarAntenaPage](doc/images/Depois/AntenaDetalhePage.JPG) |
-|                Página Editar Antena                 |                   Página Detalhes Antena                    |
+|                                                             |                                                                  |
+| :---------------------------------------------------------: | :--------------------------------------------------------------: |
+| ![PáginaEditarAntena](doc/images/Depois/AntenaEditPage.JPG) | ![PáginaDetalhesAntena](doc/images/Depois/AntenaDetalhePage.JPG) |
+|                    Página Editar Antena                     |                      Página Detalhes Antena                      |
 
 ##### Avaria
 
 |                                                 |                                                           |
 | :---------------------------------------------: | :-------------------------------------------------------: |
-| ![AvariaPage](doc/images/Depois/AvariaPage.PNG) | ![CriarAvariaPage](doc/images/Depois/CriarAvariaPage.PNG) |
+| ![AvariaPage](doc/images/Depois/AvariaPage.JPG) | ![CriarAvariaPage](doc/images/Depois/CriarAvariaPage.JPG) |
 |                  Página Avaria                  |                    Página Criar Avaria                    |
 
-|                                                     |                                                             |
-| :-------------------------------------------------: | :---------------------------------------------------------: |
-| ![AntenaPage](doc/images/Depois/AvariaEditPage.JPG) | ![CriarAntenaPage](doc/images/Depois/AvariaDetalhePage.JPG) |
-|                Página Editar Avaria                 |                   Página Detalhes Avaria                    |
+|                                                             |                                                                  |
+| :---------------------------------------------------------: | :--------------------------------------------------------------: |
+| ![PáginaEditarAvaria](doc/images/Depois/AvariaEditPage.JPG) | ![PáginaDetalhesAvaria](doc/images/Depois/AvariaDetalhePage.JPG) |
+|                    Página Editar Avaria                     |                      Página Detalhes Avaria                      |
 
 ## Tecnologias
 
@@ -57,10 +57,10 @@ Neste trabalho está a ser desenvolvido uma API que serve para gerir avarias em 
 
 - NodeJS
 - Swagger
+- React
+- Ant Design
 
 ## Relatório
-
-_Please add at least on section (a file) per Chapter. But you can add more._
 
 ### Apresentação do projeto
 
