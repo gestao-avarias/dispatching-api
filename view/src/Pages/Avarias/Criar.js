@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input, InputNumber, Select, Button, DatePicker } from 'antd';
+import { Form, Input, Select, Button } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 import { CREATE_AVARIA, GET_ALL_ANTENA, GET_ALL_UTILIZADOR } from '../../api';
 const { Option } = Select;

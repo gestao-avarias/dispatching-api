@@ -1,8 +1,9 @@
 import React from 'react';
-import { Form, Input, Select, InputNumber, Button, DatePicker } from 'antd';
+import { Form, Input, Select, Button, DatePicker } from 'antd';
 import { GET_AVARIA_BY_ID, UPDATE_AVARIA } from '../../api';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import { CREATE_AVARIA, GET_ALL_ANTENA, GET_ALL_UTILIZADOR } from '../../api';
+import { GET_ALL_ANTENA, GET_ALL_UTILIZADOR } from '../../api';
+import moment from 'moment';
 const { Option } = Select;
 // const validateMessages = {
 //   required: '${label} is required!',
@@ -21,10 +22,22 @@ const Editar = () => {
   const navigate = useNavigate();
   const [dataAntena, setDataAntena] = React.useState([]);
   const [dataUtilizador, setDataUtilizador] = React.useState([]);
-  const [data, setData] = React.useState(null);
+  // const [data, setData] = React.useState(null);
 
-  const onFinish = async (values) => {
-    const { url, options } = UPDATE_AVARIA(values.avaria);
+  const onFinish = async ({ avaria }) => {
+    const avariaBody = {
+      ...avaria,
+      status: +avaria.status,
+      data_abertura: +avaria.data_abertura.format('X'),
+      data_conclusao: avaria.data_conclusao
+        ? +avaria.data_conclusao.format('X')
+        : undefined,
+    };
+
+    console.log(avariaBody);
+
+    const { url, options } = UPDATE_AVARIA(avariaBody, id);
+
     await fetch(url, options);
     navigate('/avarias');
   };
@@ -61,14 +74,29 @@ const Editar = () => {
       setDataUtilizador(json.sort(compare));
     })();
   }, []);
-
   React.useEffect(() => {
     (async () => {
       const { url, options } = GET_AVARIA_BY_ID(id);
       const response = await fetch(url, options);
       const json = await response.json();
       // if (!response.ok && json?.antenas?.length === 0) return null;
-      setData(json);
+      // setData(json);
+
+      form.setFieldsValue({
+        avaria: {
+          nome: json?.nome,
+          id_utilizador: json?.id_utilizador,
+          id_antena: json?.id_antena,
+          status: json?.status,
+          data_abertura: moment(
+            new Date(json?.data_abertura * 1000).toISOString(),
+          ),
+          data_conclusao: json?.data_conclusao
+            ? moment(new Date(json?.data_conclusao * 1000).toISOString())
+            : null,
+          detalhe: json?.detalhe,
+        },
+      });
     })();
   }, [id]);
 
@@ -88,6 +116,7 @@ const Editar = () => {
 
       <Form
         // {...layout}
+        form={form}
         layout="vertical"
         name="nest-messages"
         onFinish={onFinish}
@@ -98,7 +127,7 @@ const Editar = () => {
           label="Identificador"
           rules={[{ required: true }]}
         >
-          <Input placeholder={data?.nome} />
+          <Input disabled />
         </Form.Item>
 
         <Form.Item
@@ -134,11 +163,12 @@ const Editar = () => {
           label="Estado"
           rules={[{ required: true }]}
         >
-          <Input placeholder={data?.status} />
+          <Input />
         </Form.Item>
 
         <Form.Item name={['avaria', 'data_abertura']} label="Data Abertura">
           <DatePicker
+            disabled
             showTime={{ format: 'HH:mm' }}
             format="YYYY-MM-DD HH:mm"
           />
@@ -156,7 +186,7 @@ const Editar = () => {
           label="Detalhes"
           rules={[{ required: true }]}
         >
-          <Input placeholder={data?.detalhe} />
+          <Input />
         </Form.Item>
 
         <Form.Item>

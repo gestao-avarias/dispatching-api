@@ -32,7 +32,7 @@ const Lista = () => {
       dataIndex: 'data_abertura',
       key: 'data_abertura',
       render: (item) => {
-        if (item) {
+        if (item > 0) {
           return new Date(item * 1000)
             .toISOString()
             .slice(0, 16)
@@ -45,7 +45,7 @@ const Lista = () => {
       dataIndex: 'data_conclusao',
       key: 'data_conclusao',
       render: (item) => {
-        if (item) {
+        if (item > 0) {
           return new Date(item * 1000)
             .toISOString()
             .slice(0, 16)

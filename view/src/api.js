@@ -90,9 +90,9 @@ export function CREATE_AVARIA(body) {
   };
 }
 
-export function UPDATE_AVARIA(body) {
+export function UPDATE_AVARIA(body, id) {
   return {
-    url: API_URL + '/avarias',
+    url: API_URL + '/avarias/' + id,
     options: {
       method: 'PUT',
       headers: {

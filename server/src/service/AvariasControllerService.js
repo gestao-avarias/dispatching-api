@@ -102,8 +102,16 @@ exports.retrieveAvarias = function () {
 exports.updateAvaria = function (body, id) {
   return new Promise(function (resolve, reject) {
     sql.query(
-      'UPDATE avaria set nome = ?, id_utilizador = ?, id_antena = ?, status = ?, data_conclusao = UNIX_TIMESTAMP(CURRENT_TIMESTAMP()), detalhe = ?  WHERE id = ?',
-      [body.nome, body.id_utilizador, body.id_antena, 0, body.detalhe, id],
+      'UPDATE avaria set nome = ?, id_utilizador = ?, id_antena = ?, status = ?, data_conclusao = ?, detalhe = ?  WHERE id = ?',
+      [
+        body.nome,
+        body.id_utilizador,
+        body.id_antena,
+        body.status,
+        body.data_conclusao,
+        body.detalhe,
+        id,
+      ],
       function (err, res) {
         if (err) {
           console.log(err);
