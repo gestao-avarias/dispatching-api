@@ -15,13 +15,11 @@ function App() {
         <Layout>
           <CustomHeader />
         </Layout>
-        <CustomGrid style={{ padding: '0 50px' }}>
-          <Routes>
-            <Route exact path="/" element={<HomePage />} />
-            <Route path="antenas/*" element={<AntenasPage />} />
-            <Route path="avarias/*" element={<AvariasPage />} />
-          </Routes>
-        </CustomGrid>
+        <Routes>
+          <Route exact path="/" element={<HomePage />} />
+          <Route path="antenas/*" element={<AntenasPage />} />
+          <Route path="avarias/*" element={<AvariasPage />} />
+        </Routes>
       </BrowserRouter>
     </div>
   );
