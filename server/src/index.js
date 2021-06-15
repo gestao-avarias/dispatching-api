@@ -2,6 +2,7 @@
 
 var path = require('path');
 var http = require('http');
+const cors = require('cors');
 
 var oas3Tools = require('oas3-tools');
 var serverPort = 8080;
@@ -18,6 +19,18 @@ var expressAppConfig = oas3Tools.expressAppConfig(
   options,
 );
 var app = expressAppConfig.getApp();
+
+app.use(cors());
+
+let corsMiddleware = app._router.stack.pop();
+
+const expressInitIndex = app._router.stack.findIndex(
+  (middleware) => middleware.name === 'expressInit',
+);
+
+if (expressInitIndex) {
+  app._router.stack.splice(expressInitIndex + 1, 0, corsMiddleware);
+}
 
 // Initialize the Swagger middleware
 http.createServer(app).listen(serverPort, function () {
