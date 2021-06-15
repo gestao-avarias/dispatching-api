@@ -19,32 +19,32 @@ Neste trabalho está a ser desenvolvido uma API que serve para gerir avarias em 
 
 |                                             |
 | :-----------------------------------------: |
-| ![HomePage](doc/images/Depois/HomePage.JPG) |
+| ![HomePage](doc/images/Depois/HomePage.jpg) |
 |               Página Inicial                |
 
 ##### Antena
 
 |                                                 |                                                           |
 | :---------------------------------------------: | :-------------------------------------------------------: |
-| ![AntenaPage](doc/images/Depois/AntenaPage.PNG) | ![CriarAntenaPage](doc/images/Depois/CriarAntenaPage.PNG) |
+| ![AntenaPage](doc/images/Depois/AntenaPage.jpg) | ![CriarAntenaPage](doc/images/Depois/CriarAntenaPage.jpg) |
 |                  Página Antena                  |                    Página Criar Antena                    |
 
-|                                                     |                                                             |
-| :-------------------------------------------------: | :---------------------------------------------------------: |
-| ![AntenaPage](doc/images/Depois/AntenaEditPage.JPG) | ![CriarAntenaPage](doc/images/Depois/AntenaDetalhePage.JPG) |
-|                Página Editar Antena                 |                   Página Detalhes Antena                    |
+|                                                             |                                                                  |
+| :---------------------------------------------------------: | :--------------------------------------------------------------: |
+| ![PáginaEditarAntena](doc/images/Depois/AntenaEditPage.jpg) | ![PáginaDetalhesAntena](doc/images/Depois/AntenaDetalhePage.jpg) |
+|                    Página Editar Antena                     |                      Página Detalhes Antena                      |
 
 ##### Avaria
 
 |                                                 |                                                           |
 | :---------------------------------------------: | :-------------------------------------------------------: |
-| ![AvariaPage](doc/images/Depois/AvariaPage.PNG) | ![CriarAvariaPage](doc/images/Depois/CriarAvariaPage.PNG) |
+| ![AvariaPage](doc/images/Depois/AvariaPage.jpg) | ![CriarAvariaPage](doc/images/Depois/CriarAvariaPage.jpg) |
 |                  Página Avaria                  |                    Página Criar Avaria                    |
 
-|                                                     |                                                             |
-| :-------------------------------------------------: | :---------------------------------------------------------: |
-| ![AntenaPage](doc/images/Depois/AvariaEditPage.JPG) | ![CriarAntenaPage](doc/images/Depois/AvariaDetalhePage.JPG) |
-|                Página Editar Avaria                 |                   Página Detalhes Avaria                    |
+|                                                             |                                                                  |
+| :---------------------------------------------------------: | :--------------------------------------------------------------: |
+| ![PáginaEditarAvaria](doc/images/Depois/AvariaEditPage.jpg) | ![PáginaDetalhesAvaria](doc/images/Depois/AvariaDetalhePage.jpg) |
+|                    Página Editar Avaria                     |                      Página Detalhes Avaria                      |
 
 ## Tecnologias
 
@@ -57,22 +57,45 @@ Neste trabalho está a ser desenvolvido uma API que serve para gerir avarias em 
 
 - NodeJS
 - Swagger
+- React
+- Ant Design
 
 ## Relatório
 
-_Please add at least on section (a file) per Chapter. But you can add more._
-
 ### Apresentação do projeto
 
+#### Descrição
+
 - Capítulo 1: [Apresentação do projeto](doc/c1.md)
+
+Neste trabalho está a ser desenvolvido uma API que serve para gerir avarias em antenas de telecomunicações. Um gestor de avarias pode atribuir tarefas ao técnico para resolver a avaria. Podendo o técnico consultar antenas e deixar comentários sobre as antenas.
 
 ### Interface de utilizador
 
 - Capítulo 2: [Protótipo da interface de utilizador e sitemap](doc/c2.md)
 
+- Página Home
+  - Navbar com HomePage, Antenas e Avarias
+- Página Antenas
+  - Lista por ordem alfabética das antenas criadas.
+  - Um botão de criar antena.
+    - Botão para voltar à lista de antenas.
+    - Três caixas de texto para escrever o nome da antena, a latitute e a longitude.
+    - Botão de criar em baixo para criar a antena.
+- Página Avarias
+
+  - Lista por ordem alfabética das avarias criadas.
+  - Um botão de criar avaria.
+    - Botão para voltar à lista de avarias.
+    - Duas caixas de texto para escrever o identificador e os detalhes.
+    - Duas dropdowns para selecionar o técnino e a antena.
+    - Botão de criar em baixo para criar a avaria.
+
 ### Produto
 
 - Capítulo 3: [Produto](doc/c3.md)
+
+  O produto permite o gestor de avarias atribuir tarefas ao técnico, e permite ao técnico consultar as anteas, marcar antenas favoritas e deixar comentários sobre as antenas.
 
 ### Apresentação
 
